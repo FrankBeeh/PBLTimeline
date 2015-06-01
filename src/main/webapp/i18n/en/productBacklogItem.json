@@ -1,0 +1,23 @@
+{
+    "productbacklogtimelineApp": {
+        "productBacklogItem" : {
+            "home": {
+                "title": "ProductBacklogItems",
+                "createLabel": "Create a new ProductBacklogItem",
+                "createOrEditLabel": "Create or edit a ProductBacklogItem"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete ProductBacklogItem {{ id }}?"
+            },
+            "detail": {
+                "title": "ProductBacklogItem"
+            },
+            "pbiKey": "PbiKey",
+            "title": "Title",
+            "description": "Description",
+            "estimate": "Estimate",
+            "state": "State",
+            "productTimestamp": "productTimestamp"
+        }
+    }
+}

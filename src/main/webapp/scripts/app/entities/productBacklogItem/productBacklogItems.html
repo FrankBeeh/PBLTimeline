@@ -1,0 +1,178 @@
+<div>
+
+    <h2 translate="productbacklogtimelineApp.productBacklogItem.home.title">ProductBacklogItems</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveProductBacklogItemModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="productbacklogtimelineApp.productBacklogItem.home.createLabel">Create a new ProductBacklogItem</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="saveProductBacklogItemModal" tabindex="-1" role="dialog" aria-labelledby="myProductBacklogItemLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myProductBacklogItemLabel" translate="productbacklogtimelineApp.productBacklogItem.home.createOrEditLabel">Create or edit a ProductBacklogItem</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="productBacklogItem.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.productBacklogItem.pbiKey">PbiKey</label>
+                            <input type="text" class="form-control" name="pbiKey"
+                                   ng-model="productBacklogItem.pbiKey" required ng-minlength="1" ng-maxlength="20">
+
+                            <div ng-show="editForm.pbiKey.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.pbiKey.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.pbiKey.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
+                                    This field is required to be at least 1 characters.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.pbiKey.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="20">
+                                    This field cannot be longer than 20 characters.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.productBacklogItem.title">Title</label>
+                            <input type="text" class="form-control" name="title"
+                                   ng-model="productBacklogItem.title" ng-maxlength="100">
+
+                            <div ng-show="editForm.title.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.title.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="100">
+                                    This field cannot be longer than 100 characters.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.productBacklogItem.description">Description</label>
+                            <input type="text" class="form-control" name="description"
+                                   ng-model="productBacklogItem.description" ng-maxlength="2000">
+
+                            <div ng-show="editForm.description.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.description.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="2000">
+                                    This field cannot be longer than 2000 characters.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.productBacklogItem.estimate">Estimate</label>
+                            <input type="number" class="form-control" name="estimate"
+                                   ng-model="productBacklogItem.estimate">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.productBacklogItem.state">State</label>
+                            <input type="text" class="form-control" name="state"
+                                   ng-model="productBacklogItem.state">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.productBacklogItem.productTimestamp">productTimestamp</label>
+                            <select class="form-control" name="productTimestamp" ng-model="productBacklogItem.productTimestamp.id" ng-options="productTimestamp.id as productTimestamp.id for productTimestamp in producttimestamps">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteProductBacklogItemConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(productBacklogItem.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="productbacklogtimelineApp.productBacklogItem.delete.question" translate-values="{id: '{{productBacklogItem.id}}'}">Are you sure you want to delete this ProductBacklogItem?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="productbacklogtimelineApp.productBacklogItem.pbiKey">PbiKey</th>
+                    <th translate="productbacklogtimelineApp.productBacklogItem.title">Title</th>
+                    <th translate="productbacklogtimelineApp.productBacklogItem.description">Description</th>
+                    <th translate="productbacklogtimelineApp.productBacklogItem.estimate">Estimate</th>
+                    <th translate="productbacklogtimelineApp.productBacklogItem.state">State</th>
+                    <th translate="productbacklogtimelineApp.productBacklogItem.productTimestamp">productTimestamp</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="productBacklogItem in productBacklogItems">
+                    <td><a ui-sref="productBacklogItemDetail({id:productBacklogItem.id})">{{productBacklogItem.id}}</a></td>
+                    <td>{{productBacklogItem.pbiKey}}</td>
+                    <td>{{productBacklogItem.title}}</td>
+                    <td>{{productBacklogItem.description}}</td>
+                    <td>{{productBacklogItem.estimate}}</td>
+                    <td>{{productBacklogItem.state}}</td>
+                    <td>{{productBacklogItem.productTimestamp.id}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="productBacklogItemDetail({id:productBacklogItem.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="showUpdate(productBacklogItem.id)"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(productBacklogItem.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

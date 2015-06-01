@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span translate="productbacklogtimelineApp.productBacklogItem.detail.title">ProductBacklogItem</span> {{productBacklogItem.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.productBacklogItem.pbiKey">PbiKey</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{productBacklogItem.pbiKey}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.productBacklogItem.title">Title</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{productBacklogItem.title}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.productBacklogItem.description">Description</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{productBacklogItem.description}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.productBacklogItem.estimate">Estimate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{productBacklogItem.estimate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.productBacklogItem.state">State</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{productBacklogItem.state}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.productBacklogItem.productTimestamp">productTimestamp</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{productBacklogItem.productTimestamp.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="productBacklogItem"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

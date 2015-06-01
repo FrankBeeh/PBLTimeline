@@ -8,6 +8,7 @@
                 "main": "Entities",
                 "productTimestamp": "ProductTimestamp",
                 "sprint": "Sprint",
+                "productBacklogItem": "ProductBacklogItem",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
