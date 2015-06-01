@@ -1,0 +1,20 @@
+{
+  "generator-jhipster": {
+    "baseName": "ProductBacklogTimeline",
+    "packageName": "de.frankbeeh.productbacklogtimeline",
+    "packageFolder": "de/frankbeeh/productbacklogtimeline",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "no",
+    "useCompass": false,
+    "buildTool": "gradle",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "rememberMeKey": "bfa8c7a610a03294bb6c9764865f9fb12824d1bd"
+  }
+}
