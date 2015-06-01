@@ -1,0 +1,104 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "productTimestamp",
+            "relationshipNameCapitalized": "ProductTimestamp",
+            "relationshipFieldName": "productTimestamp",
+            "otherEntityName": "productTimestamp",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "ProductTimestamp",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldInJavaBeanMethod": "Name",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "1",
+            "fieldValidateRulesMaxlength": "40"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "startDate",
+            "fieldType": "LocalDate",
+            "fieldNameCapitalized": "StartDate",
+            "fieldNameUnderscored": "start_date",
+            "fieldInJavaBeanMethod": "StartDate",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "endDate",
+            "fieldType": "LocalDate",
+            "fieldNameCapitalized": "EndDate",
+            "fieldNameUnderscored": "end_date",
+            "fieldInJavaBeanMethod": "EndDate",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "capacityForecast",
+            "fieldType": "BigDecimal",
+            "fieldNameCapitalized": "CapacityForecast",
+            "fieldNameUnderscored": "capacity_forecast",
+            "fieldInJavaBeanMethod": "CapacityForecast",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "effortForecast",
+            "fieldType": "BigDecimal",
+            "fieldNameCapitalized": "EffortForecast",
+            "fieldNameUnderscored": "effort_forecast",
+            "fieldInJavaBeanMethod": "EffortForecast",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "capacityDone",
+            "fieldType": "BigDecimal",
+            "fieldNameCapitalized": "CapacityDone",
+            "fieldNameUnderscored": "capacity_done",
+            "fieldInJavaBeanMethod": "CapacityDone",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "effortDone",
+            "fieldType": "BigDecimal",
+            "fieldNameCapitalized": "EffortDone",
+            "fieldNameUnderscored": "effort_done",
+            "fieldInJavaBeanMethod": "EffortDone",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": true,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": true,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150601120521",
+    "dto": "no",
+    "pagination": "no",
+    "validation": true
+}

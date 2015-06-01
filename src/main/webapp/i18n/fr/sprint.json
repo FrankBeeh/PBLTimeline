@@ -1,0 +1,26 @@
+{
+    "productbacklogtimelineApp": {
+        "sprint" : {
+            "home": {
+                "title": "Sprints",
+                "createLabel": "Créer un nouveau Sprint",
+                "createOrEditLabel": "Créer ou éditer un Sprint"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Sprint {{ id }} ?"
+            },
+            "detail": {
+                "title": "Sprint"
+            },
+            "name": "Name",
+            "startDate": "StartDate",
+            "endDate": "EndDate",
+            "capacityForecast": "CapacityForecast",
+            "effortForecast": "EffortForecast",
+            "capacityDone": "CapacityDone",
+            "effortDone": "EffortDone",
+            "productTimestamp": "productTimestamp"
+        }
+    }
+}
+

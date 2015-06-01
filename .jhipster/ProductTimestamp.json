@@ -1,0 +1,54 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "sprint",
+            "relationshipNameCapitalized": "Sprint",
+            "relationshipFieldName": "sprint",
+            "otherEntityName": "sprint",
+            "relationshipType": "one-to-many",
+            "otherEntityNameCapitalized": "Sprint",
+            "otherEntityRelationshipName": "productTimestamp"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "dateTime",
+            "fieldType": "DateTime",
+            "fieldNameCapitalized": "DateTime",
+            "fieldNameUnderscored": "date_time",
+            "fieldInJavaBeanMethod": "DateTime",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldInJavaBeanMethod": "Name",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": true,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": true,
+    "fieldsContainDate": false,
+    "changelogDate": "20150601120121",
+    "dto": "no",
+    "pagination": "no",
+    "validation": true
+}

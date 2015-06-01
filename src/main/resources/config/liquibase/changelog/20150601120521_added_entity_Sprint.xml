@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity Sprint.
+    -->
+    <changeSet id="20150601120521" author="jhipster">
+        <createTable tableName="SPRINT">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(40)">
+                <constraints nullable="false" />
+            </column>
+            <column name="start_date" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="end_date" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="capacity_forecast" type="decimal(10,2)"/>
+            <column name="effort_forecast" type="decimal(10,2)"/>
+            <column name="capacity_done" type="decimal(10,2)"/>
+            <column name="effort_done" type="decimal(10,2)"/>
+            <column name="producttimestamp_id" type="bigint"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseColumnNames="producttimestamp_id"
+                                 baseTableName="SPRINT"
+                                 constraintName="fk_sprint_producttimestamp_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="PRODUCTTIMESTAMP"/>
+
+    </changeSet>
+</databaseChangeLog>

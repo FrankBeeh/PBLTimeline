@@ -1,0 +1,86 @@
+
+<div>
+    <h2><span translate="productbacklogtimelineApp.sprint.detail.title">Sprint</span> {{sprint.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.sprint.name">Name</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{sprint.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.sprint.startDate">StartDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{sprint.startDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.sprint.endDate">EndDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{sprint.endDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.sprint.capacityForecast">CapacityForecast</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{sprint.capacityForecast}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.sprint.effortForecast">EffortForecast</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{sprint.effortForecast}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.sprint.capacityDone">CapacityDone</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{sprint.capacityDone}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.sprint.effortDone">EffortDone</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{sprint.effortDone}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="productbacklogtimelineApp.sprint.productTimestamp">productTimestamp</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{sprint.productTimestamp.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="sprint"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

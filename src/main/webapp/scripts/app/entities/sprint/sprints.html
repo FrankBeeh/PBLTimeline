@@ -1,0 +1,194 @@
+<div>
+
+    <h2 translate="productbacklogtimelineApp.sprint.home.title">Sprints</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveSprintModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="productbacklogtimelineApp.sprint.home.createLabel">Create a new Sprint</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="saveSprintModal" tabindex="-1" role="dialog" aria-labelledby="mySprintLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="mySprintLabel" translate="productbacklogtimelineApp.sprint.home.createOrEditLabel">Create or edit a Sprint</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="sprint.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.sprint.name">Name</label>
+                            <input type="text" class="form-control" name="name"
+                                   ng-model="sprint.name" required ng-minlength="1" ng-maxlength="40">
+
+                            <div ng-show="editForm.name.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.name.$error.minlength" translate="entity.validation.minlength" translate-value-min="1">
+                                    This field is required to be at least 1 characters.
+                                </p>
+                                <p class="help-block"
+                                   ng-show="editForm.name.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="40">
+                                    This field cannot be longer than 40 characters.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.sprint.startDate">StartDate</label>
+                            <input type="date" class="form-control" name="startDate"
+                                   ng-model="sprint.startDate" required>
+
+                            <div ng-show="editForm.startDate.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.startDate.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.sprint.endDate">EndDate</label>
+                            <input type="date" class="form-control" name="endDate"
+                                   ng-model="sprint.endDate" required>
+
+                            <div ng-show="editForm.endDate.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.endDate.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.sprint.capacityForecast">CapacityForecast</label>
+                            <input type="number" class="form-control" name="capacityForecast"
+                                   ng-model="sprint.capacityForecast">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.sprint.effortForecast">EffortForecast</label>
+                            <input type="number" class="form-control" name="effortForecast"
+                                   ng-model="sprint.effortForecast">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.sprint.capacityDone">CapacityDone</label>
+                            <input type="number" class="form-control" name="capacityDone"
+                                   ng-model="sprint.capacityDone">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.sprint.effortDone">EffortDone</label>
+                            <input type="number" class="form-control" name="effortDone"
+                                   ng-model="sprint.effortDone">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="productbacklogtimelineApp.sprint.productTimestamp">productTimestamp</label>
+                            <select class="form-control" name="productTimestamp" ng-model="sprint.productTimestamp.id" ng-options="productTimestamp.id as productTimestamp.id for productTimestamp in producttimestamps">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteSprintConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(sprint.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="productbacklogtimelineApp.sprint.delete.question" translate-values="{id: '{{sprint.id}}'}">Are you sure you want to delete this Sprint?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="productbacklogtimelineApp.sprint.name">Name</th>
+                    <th translate="productbacklogtimelineApp.sprint.startDate">StartDate</th>
+                    <th translate="productbacklogtimelineApp.sprint.endDate">EndDate</th>
+                    <th translate="productbacklogtimelineApp.sprint.capacityForecast">CapacityForecast</th>
+                    <th translate="productbacklogtimelineApp.sprint.effortForecast">EffortForecast</th>
+                    <th translate="productbacklogtimelineApp.sprint.capacityDone">CapacityDone</th>
+                    <th translate="productbacklogtimelineApp.sprint.effortDone">EffortDone</th>
+                    <th translate="productbacklogtimelineApp.sprint.productTimestamp">productTimestamp</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="sprint in sprints">
+                    <td><a ui-sref="sprintDetail({id:sprint.id})">{{sprint.id}}</a></td>
+                    <td>{{sprint.name}}</td>
+                    <td>{{sprint.startDate}}</td>
+                    <td>{{sprint.endDate}}</td>
+                    <td>{{sprint.capacityForecast}}</td>
+                    <td>{{sprint.effortForecast}}</td>
+                    <td>{{sprint.capacityDone}}</td>
+                    <td>{{sprint.effortDone}}</td>
+                    <td>{{sprint.productTimestamp.id}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="sprintDetail({id:sprint.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="showUpdate(sprint.id)"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(sprint.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

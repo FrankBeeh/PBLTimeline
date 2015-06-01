@@ -1,0 +1,20 @@
+{
+    "productbacklogtimelineApp": {
+        "productTimestamp" : {
+            "home": {
+                "title": "ProductTimestamps",
+                "createLabel": "Create a new ProductTimestamp",
+                "createOrEditLabel": "Create or edit a ProductTimestamp"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete ProductTimestamp {{ id }}?"
+            },
+            "detail": {
+                "title": "ProductTimestamp"
+            },
+            "dateTime": "DateTime",
+            "name": "Name",
+            "sprint": "sprint"
+        }
+    }
+}
