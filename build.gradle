@@ -32,6 +32,12 @@ bootRun {
 		addResources = false
 }
 
+eclipse {
+	project {
+		buildCommand 'org.eclipse.jdt.core.javabuilder'
+	}
+}
+
 apply from: 'yeoman.gradle'
 
 
