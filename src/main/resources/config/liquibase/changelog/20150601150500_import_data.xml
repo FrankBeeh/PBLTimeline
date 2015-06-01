@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity ProductBacklogItem.
+    -->
+    <changeSet id="20150601123500" author="jhipster">
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/ProductTimestamp_1.csv"
+                  separator=";"
+                  tableName="PRODUCTTIMESTAMP">
+        </loadData>
+        
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/PBL_1.csv"
+                  separator=";"
+                  tableName="PRODUCTBACKLOGITEM">
+        </loadData>
+        
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/Sprint_1.csv"
+                  separator=";"
+                  tableName="SPRINT">
+        </loadData>
+    </changeSet>
+</databaseChangeLog>
