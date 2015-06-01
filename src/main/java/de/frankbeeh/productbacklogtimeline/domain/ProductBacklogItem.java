@@ -52,7 +52,19 @@ public class ProductBacklogItem implements Serializable {
     @ManyToOne
     private ProductTimestamp productTimestamp;
 
-    public Long getId() {
+    public ProductBacklogItem(String pbiKey, String title, String description,
+			BigDecimal estimate, String state) {
+    	this.pbiKey = pbiKey;
+    	this.title = title;
+		this.description = description;
+		this.estimate = estimate;
+		this.state = state;
+	}
+
+	public ProductBacklogItem() {
+	}
+
+	public Long getId() {
         return id;
     }
 

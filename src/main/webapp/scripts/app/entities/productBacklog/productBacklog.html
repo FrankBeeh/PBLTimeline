@@ -1,0 +1,30 @@
+<div>
+
+    <h2 translate="productbacklogtimelineApp.productBacklog.home.title">ProductBacklogs</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="productbacklogtimelineApp.productBacklog.pbiKey">PbiKey</th>
+                    <th translate="productbacklogtimelineApp.productBacklog.title">Title</th>
+                    <th translate="productbacklogtimelineApp.productBacklog.description">Description</th>
+                    <th translate="productbacklogtimelineApp.productBacklog.estimate">Estimate</th>
+                    <th translate="productbacklogtimelineApp.productBacklog.state">State</th>
+                    <th translate="productbacklogtimelineApp.productBacklog.productTimestamp">productTimestamp</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="productBacklogItem in productBacklogItems">
+                    <td>{{productBacklogItem.comparedPbiKey}}</td>
+                    <td>{{productBacklogItem.comparedTitle}}</td>
+                    <td>{{productBacklogItem.comparedDescription}}</td>
+                    <td>{{productBacklogItem.comparedEstimate}}</td>
+                    <td>{{productBacklogItem.comparedState}}</td>
+                    <td>{{productBacklogItem.comparedProductTimestamp.id}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
