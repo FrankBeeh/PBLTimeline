@@ -24,11 +24,11 @@ public class ProductTimestampService {
 	@Inject
 	private ProductBacklogItemRepository productBacklogItemRepository;
 
-	public List<ProductBacklogItemComparison> getProductBacklog() {
+	public List<ProductBacklogItemComparison> getProductBacklog(Long selectedTimestamp, Long referenceTimestamp) {
 		final List<ProductBacklogItemComparison> productBacklog = new ArrayList<ProductBacklogItemComparison>();
-		final List<ProductBacklogItem> productBacklogItems = productBacklogItemRepository
-				.findAll();
-		for (ProductBacklogItem productBacklogItem : productBacklogItems) {
+		final List<ProductBacklogItem> selectedProductBacklogItems = productBacklogItemRepository
+				.findByProductTimestampId(selectedTimestamp);
+		for (ProductBacklogItem productBacklogItem : selectedProductBacklogItems) {
 			productBacklog.add(new ProductBacklogItemComparison(
 					new DecoratedProductBacklogItem(productBacklogItem)));
 		}
