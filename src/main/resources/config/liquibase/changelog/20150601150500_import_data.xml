@@ -12,19 +12,19 @@
     -->
     <changeSet id="20150601123500" author="jhipster">
         <loadData encoding="UTF-8"
-                  file="config/liquibase/ProductTimestamp_1.csv"
+                  file="config/liquibase/ProductTimestamp.csv"
                   separator=";"
                   tableName="PRODUCTTIMESTAMP">
         </loadData>
         
         <loadData encoding="UTF-8"
-                  file="config/liquibase/PBL_1.csv"
+                  file="config/liquibase/PBI.csv"
                   separator=";"
                   tableName="PRODUCTBACKLOGITEM">
         </loadData>
         
         <loadData encoding="UTF-8"
-                  file="config/liquibase/Sprint_1.csv"
+                  file="config/liquibase/Sprint.csv"
                   separator=";"
                   tableName="SPRINT">
         </loadData>

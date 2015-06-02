@@ -1,0 +1,11 @@
+ID;PBI_KEY;TITLE;DESCRIPTION;ESTIMATE;STATE;PRODUCTTIMESTAMP_ID
+3;PBI-3;Title 3;Description 3;5;Todo;1
+1;PBI-1;Title 1;Description 1;3;Done;1
+4;PBI-4;Title 4;Description 4;8;Todo;1
+2;PBI-2;Title 2;Description 2;1;Todo;1
+5;PBI-1;Title 1;Description 1;3;Done;2
+6;PBI-2;Title 2;Description 2;1;Canceled;2
+7;PBI-3;New Title 3;New Description 3;5;Todo;2
+8;PBI-4;Title 4;Description 4;5;Todo;2
+9;PBI-5;Title 5;Description 5;13;Done;2
+10;PBI-6;Title 6;Description 6;2;Todo;2
