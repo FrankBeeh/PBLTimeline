@@ -12,7 +12,7 @@ angular.module('productbacklogtimelineApp')
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/entities/productBacklog/productBacklogs.html',
+                        templateUrl: 'scripts/app/entities/productBacklog/productBacklog.html',
                         controller: 'ProductBacklogController'
                     }
                 },

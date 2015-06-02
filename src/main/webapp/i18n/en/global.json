@@ -9,6 +9,7 @@
                 "productTimestamp": "ProductTimestamp",
                 "sprint": "Sprint",
                 "productBacklogItem": "ProductBacklogItem",
+                "productBacklog": "ProductBacklog",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

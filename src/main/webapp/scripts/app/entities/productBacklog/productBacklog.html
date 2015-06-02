@@ -11,18 +11,16 @@
                     <th translate="productbacklogtimelineApp.productBacklog.description">Description</th>
                     <th translate="productbacklogtimelineApp.productBacklog.estimate">Estimate</th>
                     <th translate="productbacklogtimelineApp.productBacklog.state">State</th>
-                    <th translate="productbacklogtimelineApp.productBacklog.productTimestamp">productTimestamp</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="productBacklogItem in productBacklogItems">
-                    <td>{{productBacklogItem.comparedPbiKey}}</td>
-                    <td>{{productBacklogItem.comparedTitle}}</td>
-                    <td>{{productBacklogItem.comparedDescription}}</td>
-                    <td>{{productBacklogItem.comparedEstimate}}</td>
-                    <td>{{productBacklogItem.comparedState}}</td>
-                    <td>{{productBacklogItem.comparedProductTimestamp.id}}</td>
+                    <td>{{productBacklogItem.comparedPbiKey.comparedValue}}</td>
+                    <td>{{productBacklogItem.comparedTitle.comparedValue}}</td>
+                    <td>{{productBacklogItem.comparedDescription.comparedValue}}</td>
+                    <td>{{productBacklogItem.comparedEstimate.comparedValue}}</td>
+                    <td>{{productBacklogItem.comparedState.comparedValue}}</td>
                 </tr>
             </tbody>
         </table>
