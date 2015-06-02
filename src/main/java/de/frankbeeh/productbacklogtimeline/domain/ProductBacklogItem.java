@@ -54,6 +54,7 @@ public class ProductBacklogItem implements Serializable {
 
     public ProductBacklogItem(String pbiKey, String title, String description,
 			BigDecimal estimate, String state) {
+    	this.id = -1l;
     	this.pbiKey = pbiKey;
     	this.title = title;
 		this.description = description;

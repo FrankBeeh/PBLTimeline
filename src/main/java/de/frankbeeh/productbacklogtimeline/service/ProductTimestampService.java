@@ -11,8 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.frankbeeh.productbacklogtimeline.domain.DecoratedProductBacklogItem;
+import de.frankbeeh.productbacklogtimeline.domain.DecoratedProductTimestamp;
+import de.frankbeeh.productbacklogtimeline.domain.ProductBacklog;
 import de.frankbeeh.productbacklogtimeline.domain.ProductBacklogItem;
 import de.frankbeeh.productbacklogtimeline.domain.ProductBacklogItemComparison;
+import de.frankbeeh.productbacklogtimeline.domain.ProductTimestampComparison;
 import de.frankbeeh.productbacklogtimeline.repository.ProductBacklogItemRepository;
 
 @Service
@@ -24,14 +27,31 @@ public class ProductTimestampService {
 	@Inject
 	private ProductBacklogItemRepository productBacklogItemRepository;
 
-	public List<ProductBacklogItemComparison> getProductBacklog(Long selectedTimestamp, Long referenceTimestamp) {
-		final List<ProductBacklogItemComparison> productBacklog = new ArrayList<ProductBacklogItemComparison>();
-		final List<ProductBacklogItem> selectedProductBacklogItems = productBacklogItemRepository
-				.findByProductTimestampId(selectedTimestamp);
+	public List<ProductBacklogItemComparison> getProductBacklog(
+			Long selectedTimestamp, Long referenceTimestamp) {
+		final ProductTimestampComparison productTimestampComparison = new ProductTimestampComparison();
+		productTimestampComparison
+				.setSelectedTimestamp(new DecoratedProductTimestamp(null, null,
+						createProductBacklog(productBacklogItemRepository
+								.findByProductTimestampId(selectedTimestamp))));
+		productTimestampComparison
+				.setReferenceTimestamp(new DecoratedProductTimestamp(null,
+						null, createProductBacklog(productBacklogItemRepository
+								.findByProductTimestampId(referenceTimestamp))));
+		final List<ProductBacklogItemComparison> comparisons = productTimestampComparison.getProductBacklogComparision()
+				.getComparisons();
+		log.debug(comparisons.toString());
+		return comparisons;
+	}
+
+	public ProductBacklog createProductBacklog(
+			final List<ProductBacklogItem> selectedProductBacklogItems) {
+		final List<DecoratedProductBacklogItem> productBacklog = new ArrayList<DecoratedProductBacklogItem>();
 		for (ProductBacklogItem productBacklogItem : selectedProductBacklogItems) {
-			productBacklog.add(new ProductBacklogItemComparison(
-					new DecoratedProductBacklogItem(productBacklogItem)));
+			productBacklog.add(new DecoratedProductBacklogItem(
+					productBacklogItem));
 		}
-		return productBacklog;
+		ProductBacklog productBacklog2 = new ProductBacklog(productBacklog);
+		return productBacklog2;
 	}
 }

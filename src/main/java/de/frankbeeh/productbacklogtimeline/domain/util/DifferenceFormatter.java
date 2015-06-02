@@ -137,7 +137,7 @@ public class DifferenceFormatter {
     }
 
     public static ComparedValue formatStateDifference(State state, State referenceState) {
-        return formatTextualDifference(state == null ? null : state.toString(), referenceState == null ? null : referenceState.toString());
+        return formatTextualDifference(state == null ? null : state.toString(), State.New.equals(referenceState)  ? null : referenceState.toString());
     }
 
 	// TODO reactivate

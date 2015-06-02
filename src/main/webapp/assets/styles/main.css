@@ -145,3 +145,20 @@ ul#strength {
     width:20px;
 }
 /* end Password strength bar style */
+.Earlier {
+	background: linear-gradient(to top, White 0%, RoyalBlue 100%); 
+}
+
+.Later {
+	background: linear-gradient(to bottom, White 0%, Red 100%);
+}
+
+.New {
+	background: GoldenRod;
+}
+
+.Changed {
+	background: linear-gradient(to bottom, White 0%, Silver 50%, White 100%);
+}
+
+

@@ -1,5 +1,5 @@
 package de.frankbeeh.productbacklogtimeline.domain;
 
 public enum State {
-    Todo, Done, Canceled, InProgress
+    Todo, Done, Canceled, InProgress, New
 }

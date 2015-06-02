@@ -16,11 +16,11 @@
             </thead>
             <tbody>
                 <tr ng-repeat="productBacklogItem in productBacklogItems">
-                    <td>{{productBacklogItem.comparedPbiKey.comparedValue}}</td>
-                    <td>{{productBacklogItem.comparedTitle.comparedValue}}</td>
-                    <td>{{productBacklogItem.comparedDescription.comparedValue}}</td>
-                    <td>{{productBacklogItem.comparedEstimate.comparedValue}}</td>
-                    <td>{{productBacklogItem.comparedState.comparedValue}}</td>
+                    <td ng-class="productBacklogItem.comparedPbiKey.styleClass">{{productBacklogItem.comparedPbiKey.comparedValue}}</td>
+                    <td ng-class="productBacklogItem.comparedTitle.styleClass">{{productBacklogItem.comparedTitle.comparedValue}}</td>
+                    <td ng-class="productBacklogItem.comparedDescription.styleClass">{{productBacklogItem.comparedDescription.comparedValue}}</td>
+                    <td ng-class="productBacklogItem.comparedEstimate.styleClass">{{productBacklogItem.comparedEstimate.comparedValue}}</td>
+                    <td ng-class="productBacklogItem.comparedState.styleClass">>{{productBacklogItem.comparedState.comparedValue}}</td>
                 </tr>
             </tbody>
         </table>

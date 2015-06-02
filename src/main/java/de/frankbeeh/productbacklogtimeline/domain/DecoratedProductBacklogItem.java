@@ -32,7 +32,7 @@ public class DecoratedProductBacklogItem {
 			String description, BigDecimal estimate, State state,
 			String jiraSprint, String jiraRank, String plannedRelease) {
 		this(new ProductBacklogItem(id, title, description, estimate,
-				state.toString()));
+				state == null ? null : state.toString()));
 	}
 
 	public DecoratedProductBacklogItem(ProductBacklogItem productBacklogItem) {
