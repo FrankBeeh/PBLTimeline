@@ -7,20 +7,24 @@
             <thead>
                 <tr>
                     <th translate="productbacklogtimelineApp.productBacklog.pbiKey">PbiKey</th>
-                    <th translate="productbacklogtimelineApp.productBacklog.title">Title</th>
-                    <th translate="productbacklogtimelineApp.productBacklog.description">Description</th>
+                    <th translate="productbacklogtimelineApp.productBacklog.rank">Rank</th>
                     <th translate="productbacklogtimelineApp.productBacklog.estimate">Estimate</th>
                     <th translate="productbacklogtimelineApp.productBacklog.state">State</th>
+                    <th translate="productbacklogtimelineApp.productBacklog.title">Title</th>
+                    <th translate="productbacklogtimelineApp.productBacklog.description">Description</th>
+                    <th translate="productbacklogtimelineApp.productBacklog.accumulatedEstimate">Estimate</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="productBacklogItem in productBacklogItems">
                     <td ng-class="productBacklogItem.comparedPbiKey.styleClass">{{productBacklogItem.comparedPbiKey.comparedValue}}</td>
+                    <td ng-class="productBacklogItem.comparedRank.styleClass">{{productBacklogItem.comparedRank.comparedValue}}</td>
+                    <td ng-class="productBacklogItem.comparedEstimate.styleClass">{{productBacklogItem.comparedEstimate.comparedValue}}</td>
+                    <td ng-class="productBacklogItem.comparedState.styleClass">{{productBacklogItem.comparedState.comparedValue}}</td>
                     <td ng-class="productBacklogItem.comparedTitle.styleClass">{{productBacklogItem.comparedTitle.comparedValue}}</td>
                     <td ng-class="productBacklogItem.comparedDescription.styleClass">{{productBacklogItem.comparedDescription.comparedValue}}</td>
-                    <td ng-class="productBacklogItem.comparedEstimate.styleClass">{{productBacklogItem.comparedEstimate.comparedValue}}</td>
-                    <td ng-class="productBacklogItem.comparedState.styleClass">>{{productBacklogItem.comparedState.comparedValue}}</td>
+                    <td ng-class="productBacklogItem.comparedAccumulatedEstimate.styleClass">{{productBacklogItem.comparedAccumulatedEstimate.comparedValue}}</td>
                 </tr>
             </tbody>
         </table>

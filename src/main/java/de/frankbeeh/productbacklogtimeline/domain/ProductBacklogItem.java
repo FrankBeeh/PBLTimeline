@@ -48,18 +48,22 @@ public class ProductBacklogItem implements Serializable {
 
     @Column(name = "state")
     private String state;
+    
+    @Column(name = "rank")
+    private Long rank;
 
     @ManyToOne
     private ProductTimestamp productTimestamp;
 
     public ProductBacklogItem(String pbiKey, String title, String description,
-			BigDecimal estimate, String state) {
-    	this.id = -1l;
+			BigDecimal estimate, String state, Long rank) {
+		this.id = -1l;
     	this.pbiKey = pbiKey;
     	this.title = title;
 		this.description = description;
 		this.estimate = estimate;
 		this.state = state;
+		this.rank = rank;
 	}
 
 	public ProductBacklogItem() {
@@ -84,6 +88,14 @@ public class ProductBacklogItem implements Serializable {
     public String getTitle() {
         return title;
     }
+    
+    public Long getRank() {
+		return rank;
+	}
+    
+    public void setRank(Long rank) {
+		this.rank = rank;
+	}
 
     public void setTitle(String title) {
         this.title = title;

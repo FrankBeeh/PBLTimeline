@@ -17,6 +17,7 @@
             "description": "Description",
             "estimate": "Estimate",
             "state": "State",
+            "rank": "Rank",
             "productTimestamp": "productTimestamp"
         }
     }

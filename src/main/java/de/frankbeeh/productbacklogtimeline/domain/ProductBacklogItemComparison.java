@@ -54,11 +54,11 @@ public class ProductBacklogItemComparison {
     }
 
     public ComparedValue getComparedAccumulatedEstimate() {
-        return DifferenceFormatter.formatDoubleDifference(productBacklogItem.getAccumulatedEstimate(), referenceProductBacklogItem.getAccumulatedEstimate(), true);
+        return DifferenceFormatter.formatBigDecimalDifference(productBacklogItem.getAccumulatedEstimate(), referenceProductBacklogItem.getAccumulatedEstimate(), true);
     }
 
-    public ComparedValue getComparedProductBacklogRank() {
-        return DifferenceFormatter.formatProductBacklogRankDifference(productBacklogItem.getProductBacklogRank(), referenceProductBacklogItem.getProductBacklogRank());
+    public ComparedValue getComparedRank() {
+        return DifferenceFormatter.formatProductBacklogRankDifference(productBacklogItem.getRank(), referenceProductBacklogItem.getRank());
     }
 
     @Override

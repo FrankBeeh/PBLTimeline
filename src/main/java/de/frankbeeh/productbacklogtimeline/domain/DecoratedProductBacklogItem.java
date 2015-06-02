@@ -24,15 +24,14 @@ import com.google.common.hash.Hashing;
  */
 public class DecoratedProductBacklogItem {
 	private final Map<String, Sprint> completionForecast;
-	private Double accumulatedEstimate;
-	private Integer productBacklogRank;
+	private BigDecimal accumulatedEstimate;
 	private final ProductBacklogItem data;
 
 	public DecoratedProductBacklogItem(String id, String title,
 			String description, BigDecimal estimate, State state,
-			String jiraSprint, String jiraRank, String plannedRelease) {
+			String jiraSprint, Long rank, String plannedRelease) {
 		this(new ProductBacklogItem(id, title, description, estimate,
-				state == null ? null : state.toString()));
+				state == null ? null : state.toString(), rank));
 	}
 
 	public DecoratedProductBacklogItem(ProductBacklogItem productBacklogItem) {
@@ -40,11 +39,11 @@ public class DecoratedProductBacklogItem {
 		this.completionForecast = new HashMap<String, Sprint>();
 	}
 
-	public void setAccumulatedEstimate(Double accumulatedEstimate) {
+	public void setAccumulatedEstimate(BigDecimal accumulatedEstimate) {
 		this.accumulatedEstimate = accumulatedEstimate;
 	}
 
-	public Double getAccumulatedEstimate() {
+	public BigDecimal getAccumulatedEstimate() {
 		return accumulatedEstimate;
 	}
 
@@ -56,12 +55,8 @@ public class DecoratedProductBacklogItem {
 		completionForecast.put(progressForecastName, sprint);
 	}
 
-	public void setProductBacklogRank(int productBacklogRank) {
-		this.productBacklogRank = productBacklogRank;
-	}
-
-	public Integer getProductBacklogRank() {
-		return productBacklogRank;
+	public Long getRank() {
+		return data.getRank();
 	}
 
 	@Override

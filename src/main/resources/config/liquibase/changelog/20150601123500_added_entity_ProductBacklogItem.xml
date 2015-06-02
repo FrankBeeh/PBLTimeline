@@ -22,6 +22,7 @@
             <column name="description" type="varchar(2000)"/>
             <column name="estimate" type="decimal(10,2)"/>
             <column name="state" type="varchar(255)"/>
+            <column name="rank" type="bigint"/>
             <column name="producttimestamp_id" type="bigint"/>
         </createTable>
         

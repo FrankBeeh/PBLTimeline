@@ -41,7 +41,7 @@ public class DifferenceFormatter {
         return new ComparedValue(direction, stringBuilder.toString());
     }
 
-    public static ComparedValue formatProductBacklogRankDifference(Integer rank, Integer referenceRank) {
+    public static ComparedValue formatProductBacklogRankDifference(Long rank, Long referenceRank) {
         final StringBuilder stringBuilder = new StringBuilder();
         String formattedEstimate = "";
         ProductBacklogDirection direction = ProductBacklogDirection.Same;
@@ -49,7 +49,7 @@ public class DifferenceFormatter {
             formattedEstimate = rank.toString();
             stringBuilder.append(formattedEstimate);
             if (referenceRank != null) {
-                final Integer difference = rank - referenceRank;
+                final Long difference = rank - referenceRank;
                 if (difference != 0) {
                     final String formattedDifference = "(" + DIFFERENCE_LONG_FORMAT.format((long) difference) + ")";
                     rigthAllign(stringBuilder, formattedEstimate, formattedDifference);
@@ -167,7 +167,7 @@ public class DifferenceFormatter {
         ProductBacklogDirection direction = ProductBacklogDirection.Same;
         if (referenceValue != null) {
             final BigDecimal difference = value.subtract(referenceValue);
-            if (difference.compareTo(BigDecimal.ZERO) == 0) {
+            if (difference.compareTo(BigDecimal.ZERO) != 0) {
                 final String formattedDifference = "(" + DIFFERENCE_DOUBLE_FORMAT.format(difference) + ")";
                 rigthAllign(stringBuilder, formattedEstimate, formattedDifference);
                 if (difference.compareTo(BigDecimal.ZERO) < 0) {

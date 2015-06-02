@@ -9,7 +9,9 @@
             "description": "Description",
             "estimate": "Estimate",
             "state": "State",
-            "productTimestamp": "productTimestamp"
+			"accumulatedEstimate": "Acc. Estimate",
+            "productTimestamp": "productTimestamp",
+            "rank": "Rank"
         }
     }
 }

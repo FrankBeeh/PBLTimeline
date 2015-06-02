@@ -1,7 +1,11 @@
 package de.frankbeeh.productbacklogtimeline.domain;
 
+import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
+
+import de.frankbeeh.productbacklogtimeline.service.visitor.AccumulateEstimate;
+import de.frankbeeh.productbacklogtimeline.service.visitor.ProductBacklogItemVisitor;
 
 /**
  * Responsibility:
@@ -13,7 +17,7 @@ import java.util.List;
 public class ProductBacklog {
 	private final LinkedList<DecoratedProductBacklogItem> items;
 
-	// private final ProductBacklogItemVisitor[] visitors;
+	 private final ProductBacklogItemVisitor[] visitors;
 	// private final ProductBacklogSortingStrategy sortingStrategy;
 
 	public ProductBacklog() {
@@ -24,6 +28,7 @@ public class ProductBacklog {
 		// ForecastSprintOfCompletion(VelocityForecast.MINIMUM_VELOCITY_FORECAST),
 		// new
 		// ForecastSprintOfCompletion(VelocityForecast.MAXIMUM_VELOCITY_FORECAST));
+		this.visitors = new ProductBacklogItemVisitor[]{new AccumulateEstimate()};
 		this.items = new LinkedList<DecoratedProductBacklogItem>();
 	}
 
@@ -48,15 +53,15 @@ public class ProductBacklog {
 		return items;
 	}
 
-//	public void updateAllItems(VelocityForecast selectedVelocityForecast) {
+	public void updateAllItems(VelocityForecast selectedVelocityForecast) {
 //		sortingStrategy.sortProductBacklog(this, selectedVelocityForecast);
-//		for (final ProductBacklogItemVisitor visitor : visitors) {
-//			visitor.reset();
-//			for (final ProductBacklogItem item : items) {
-//				visitor.visit(item, selectedVelocityForecast);
-//			}
-//		}
-//	}
+		for (final ProductBacklogItemVisitor visitor : visitors) {
+			visitor.reset();
+			for (final DecoratedProductBacklogItem item : items) {
+				visitor.visit(item, selectedVelocityForecast);
+			}
+		}
+	}
 
 	public boolean containsId(String key) {
 		for (final DecoratedProductBacklogItem item : items) {
@@ -76,9 +81,9 @@ public class ProductBacklog {
 		return null;
 	}
 
-	public Double getTotalEffort() {
+	public BigDecimal getTotalEffort() {
 		if (items.isEmpty()) {
-			return 0.0;
+			return BigDecimal.ZERO;
 		}
 		return items.getLast().getAccumulatedEstimate();
 	}
