@@ -1,0 +1,26 @@
+<div>
+
+    <h2 translate="productbacklogtimelineApp.velocityForecast.home.title">velocityForecasts</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="productbacklogtimelineApp.velocityForecast.name">Name</th>
+                    <th translate="productbacklogtimelineApp.velocityForecast.startDate">Rank</th>
+                    <th translate="productbacklogtimelineApp.velocityForecast.endDate">Estimate</th>
+                    <th translate="productbacklogtimelineApp.velocityForecast.state">State</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="velocityForecast in velocityForecasts">
+                    <td ng-class="velocityForecast.comparedName.styleClass">{{velocityForecast.comparedName.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedStartDate.styleClass">{{velocityForecast.comparedStartDate.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedEndDate.styleClass">{{velocityForecast.comparedEndDate.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedState.styleClass">{{velocityForecast.comparedState.comparedValue}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

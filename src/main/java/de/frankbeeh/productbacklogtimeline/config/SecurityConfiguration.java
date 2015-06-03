@@ -1,31 +1,29 @@
 package de.frankbeeh.productbacklogtimeline.config;
 
-import de.frankbeeh.productbacklogtimeline.security.*;
-import de.frankbeeh.productbacklogtimeline.web.filter.CsrfCookieGeneratorFilter;
+import javax.inject.Inject;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-
-import org.springframework.data.repository.query.spi.EvaluationContextExtension;
-import org.springframework.data.repository.query.spi.EvaluationContextExtensionSupport;
-import org.springframework.security.access.expression.SecurityExpressionRoot;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
-
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.csrf.CsrfFilter;
 
-import javax.inject.Inject;
+import de.frankbeeh.productbacklogtimeline.security.AjaxAuthenticationFailureHandler;
+import de.frankbeeh.productbacklogtimeline.security.AjaxAuthenticationSuccessHandler;
+import de.frankbeeh.productbacklogtimeline.security.AjaxLogoutSuccessHandler;
+import de.frankbeeh.productbacklogtimeline.security.AuthoritiesConstants;
+import de.frankbeeh.productbacklogtimeline.security.Http401UnauthorizedEntryPoint;
+import de.frankbeeh.productbacklogtimeline.web.filter.CsrfCookieGeneratorFilter;
 
 @Configuration
 @EnableWebSecurity

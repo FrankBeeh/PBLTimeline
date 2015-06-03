@@ -3,8 +3,10 @@ package de.frankbeeh.productbacklogtimeline.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import de.frankbeeh.productbacklogtimeline.domain.util.CustomDateTimeDeserializer;
 import de.frankbeeh.productbacklogtimeline.domain.util.CustomDateTimeSerializer;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Type;
@@ -12,6 +14,7 @@ import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,6 +23,7 @@ import java.util.Objects;
 /**
  * A ProductTimestamp.
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "PRODUCTTIMESTAMP")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)

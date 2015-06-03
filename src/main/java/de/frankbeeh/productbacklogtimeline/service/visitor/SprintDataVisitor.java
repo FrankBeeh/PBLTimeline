@@ -1,11 +1,11 @@
 package de.frankbeeh.productbacklogtimeline.service.visitor;
 
-import de.frankbeeh.productbacklogtimeline.domain.Sprint;
+import de.frankbeeh.productbacklogtimeline.domain.DecoratedSprint;
 
 public interface SprintDataVisitor {
 
     public abstract void reset();
 
-    public abstract void visit(Sprint sprintData);
+    public abstract void visit(DecoratedSprint sprint);
 
 }

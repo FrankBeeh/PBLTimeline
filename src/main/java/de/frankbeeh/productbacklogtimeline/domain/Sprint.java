@@ -34,148 +34,161 @@ import de.frankbeeh.productbacklogtimeline.domain.util.ISO8601LocalDateDeseriali
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Sprint implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    @NotNull
-    @Size(min = 1, max = 40)
-    @Column(name = "name", length = 40, nullable = false)
-    private String name;
+	@NotNull
+	@Size(min = 1, max = 40)
+	@Column(name = "name", length = 40, nullable = false)
+	private String name;
 
-    @NotNull
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
-    @Column(name = "start_date", nullable = false)
-    private LocalDate startDate;
+	@NotNull
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+	@JsonSerialize(using = CustomLocalDateSerializer.class)
+	@JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+	@Column(name = "start_date", nullable = false)
+	private LocalDate startDate;
 
-    @NotNull
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
-    @Column(name = "end_date", nullable = false)
-    private LocalDate endDate;
+	@NotNull
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+	@JsonSerialize(using = CustomLocalDateSerializer.class)
+	@JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+	@Column(name = "end_date", nullable = false)
+	private LocalDate endDate;
 
-    @Column(name = "capacity_forecast", precision=10, scale=2, nullable = false)
-    private BigDecimal capacityForecast;
+	@Column(name = "capacity_forecast", precision = 10, scale = 2, nullable = false)
+	private BigDecimal capacityForecast;
 
-    @Column(name = "effort_forecast", precision=10, scale=2, nullable = false)
-    private BigDecimal effortForecast;
+	@Column(name = "effort_forecast", precision = 10, scale = 2, nullable = false)
+	private BigDecimal effortForecast;
 
-    @Column(name = "capacity_done", precision=10, scale=2, nullable = false)
-    private BigDecimal capacityDone;
+	@Column(name = "capacity_done", precision = 10, scale = 2, nullable = false)
+	private BigDecimal capacityDone;
 
-    @Column(name = "effort_done", precision=10, scale=2, nullable = false)
-    private BigDecimal effortDone;
+	@Column(name = "effort_done", precision = 10, scale = 2, nullable = false)
+	private BigDecimal effortDone;
 
-    @ManyToOne
-    private ProductTimestamp productTimestamp;
+	@ManyToOne
+	private ProductTimestamp productTimestamp;
 
-    public Long getId() {
-        return id;
-    }
+	public Sprint(String name, LocalDate startDate, LocalDate endDate,
+			BigDecimal capacityForecast, BigDecimal effortForecast,
+			BigDecimal capacityDone, BigDecimal effortDone) {
+		this.id = -1l;
+		this.name = name;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.capacityForecast = capacityForecast;
+		this.effortForecast = effortForecast;
+		this.capacityDone = capacityDone;
+		this.effortDone = effortDone;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Sprint() {
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public LocalDate getStartDate() {
-        return startDate;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public LocalDate getEndDate() {
-        return endDate;
-    }
+	public LocalDate getStartDate() {
+		return startDate;
+	}
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
+	public void setStartDate(LocalDate startDate) {
+		this.startDate = startDate;
+	}
 
-    public BigDecimal getCapacityForecast() {
-        return capacityForecast;
-    }
+	public LocalDate getEndDate() {
+		return endDate;
+	}
 
-    public void setCapacityForecast(BigDecimal capacityForecast) {
-        this.capacityForecast = capacityForecast;
-    }
+	public void setEndDate(LocalDate endDate) {
+		this.endDate = endDate;
+	}
 
-    public BigDecimal getEffortForecast() {
-        return effortForecast;
-    }
+	public BigDecimal getCapacityForecast() {
+		return capacityForecast;
+	}
 
-    public void setEffortForecast(BigDecimal effortForecast) {
-        this.effortForecast = effortForecast;
-    }
+	public void setCapacityForecast(BigDecimal capacityForecast) {
+		this.capacityForecast = capacityForecast;
+	}
 
-    public BigDecimal getCapacityDone() {
-        return capacityDone;
-    }
+	public BigDecimal getEffortForecast() {
+		return effortForecast;
+	}
 
-    public void setCapacityDone(BigDecimal capacityDone) {
-        this.capacityDone = capacityDone;
-    }
+	public void setEffortForecast(BigDecimal effortForecast) {
+		this.effortForecast = effortForecast;
+	}
 
-    public BigDecimal getEffortDone() {
-        return effortDone;
-    }
+	public BigDecimal getCapacityDone() {
+		return capacityDone;
+	}
 
-    public void setEffortDone(BigDecimal effortDone) {
-        this.effortDone = effortDone;
-    }
+	public void setCapacityDone(BigDecimal capacityDone) {
+		this.capacityDone = capacityDone;
+	}
 
-    public ProductTimestamp getProductTimestamp() {
-        return productTimestamp;
-    }
+	public BigDecimal getEffortDone() {
+		return effortDone;
+	}
 
-    public void setProductTimestamp(ProductTimestamp productTimestamp) {
-        this.productTimestamp = productTimestamp;
-    }
+	public void setEffortDone(BigDecimal effortDone) {
+		this.effortDone = effortDone;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public ProductTimestamp getProductTimestamp() {
+		return productTimestamp;
+	}
 
-        Sprint sprint = (Sprint) o;
+	public void setProductTimestamp(ProductTimestamp productTimestamp) {
+		this.productTimestamp = productTimestamp;
+	}
 
-        if ( ! Objects.equals(id, sprint.id)) return false;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-        return true;
-    }
+		Sprint sprint = (Sprint) o;
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+		if (!Objects.equals(id, sprint.id))
+			return false;
 
-    @Override
-    public String toString() {
-        return "Sprint{" +
-                "id=" + id +
-                ", name='" + name + "'" +
-                ", startDate='" + startDate + "'" +
-                ", endDate='" + endDate + "'" +
-                ", capacityForecast='" + capacityForecast + "'" +
-                ", effortForecast='" + effortForecast + "'" +
-                ", capacityDone='" + capacityDone + "'" +
-                ", effortDone='" + effortDone + "'" +
-                '}';
-    }
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(id);
+	}
+
+	@Override
+	public String toString() {
+		return "Sprint{" + "id=" + id + ", name='" + name + "'"
+				+ ", startDate='" + startDate + "'" + ", endDate='" + endDate
+				+ "'" + ", capacityForecast='" + capacityForecast + "'"
+				+ ", effortForecast='" + effortForecast + "'"
+				+ ", capacityDone='" + capacityDone + "'" + ", effortDone='"
+				+ effortDone + "'" + '}';
+	}
 }

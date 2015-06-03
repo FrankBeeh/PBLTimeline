@@ -1,13 +1,12 @@
 package de.frankbeeh.productbacklogtimeline.service;
 
-import de.frankbeeh.productbacklogtimeline.domain.Authority;
-import de.frankbeeh.productbacklogtimeline.domain.PersistentToken;
-import de.frankbeeh.productbacklogtimeline.domain.User;
-import de.frankbeeh.productbacklogtimeline.repository.AuthorityRepository;
-import de.frankbeeh.productbacklogtimeline.repository.PersistentTokenRepository;
-import de.frankbeeh.productbacklogtimeline.repository.UserRepository;
-import de.frankbeeh.productbacklogtimeline.security.SecurityUtils;
-import de.frankbeeh.productbacklogtimeline.service.util.RandomUtil;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+import javax.inject.Inject;
+
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.slf4j.Logger;
@@ -17,11 +16,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import de.frankbeeh.productbacklogtimeline.domain.Authority;
+import de.frankbeeh.productbacklogtimeline.domain.User;
+import de.frankbeeh.productbacklogtimeline.repository.AuthorityRepository;
+import de.frankbeeh.productbacklogtimeline.repository.PersistentTokenRepository;
+import de.frankbeeh.productbacklogtimeline.repository.UserRepository;
+import de.frankbeeh.productbacklogtimeline.security.SecurityUtils;
+import de.frankbeeh.productbacklogtimeline.service.util.RandomUtil;
 
 /**
  * Service class for managing users.

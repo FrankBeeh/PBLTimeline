@@ -10,6 +10,7 @@
                 "sprint": "Sprint",
                 "productBacklogItem": "ProductBacklogItem",
                 "productBacklog": "ProductBacklog",
+                "velocityForecast": "Velocity Forecast",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -8,18 +8,18 @@ package de.frankbeeh.productbacklogtimeline.domain;
  */
 public class ProductTimestampComparison {
     private ProductBacklogComparison productBacklogComparison = new ProductBacklogComparison();
-//    private VelocityForecastComparison velocityForecastComparison = new VelocityForecastComparison();
+    private VelocityForecastComparison velocityForecastComparison = new VelocityForecastComparison();
 //    private ReleaseForecastComparison releaseForecastComparison = new ReleaseForecastComparison();
 
     public void setSelectedTimestamp(DecoratedProductTimestamp selectedProductTimestamp) {
         productBacklogComparison.setSelected(selectedProductTimestamp.getProductBacklog());
-//        velocityForecastComparison.setSelected(selectedProductTimestamp.getVelocityForecast());
+        velocityForecastComparison.setSelected(selectedProductTimestamp.getVelocityForecast());
 //        releaseForecastComparison.setSelected(selectedProductTimestamp.getReleaseForecast());
     }
 
     public void setReferenceTimestamp(DecoratedProductTimestamp referenceProductTimestamp) {
         productBacklogComparison.setReference(referenceProductTimestamp.getProductBacklog());
-//        velocityForecastComparison.setReference(referenceProductTimestamp.getVelocityForecast());
+        velocityForecastComparison.setReference(referenceProductTimestamp.getVelocityForecast());
 //        releaseForecastComparison.setReference(referenceProductTimestamp.getReleaseForecast());
     }
 
@@ -27,10 +27,10 @@ public class ProductTimestampComparison {
         return productBacklogComparison;
     }
 
-//    public VelocityForecastComparison getVelocityForecastComparison() {
-//        return velocityForecastComparison;
-//    }
-//    
+    public VelocityForecastComparison getVelocityForecastComparison() {
+        return velocityForecastComparison;
+    }
+    
 //    public ReleaseForecastComparison getReleaseForecastComparison() {
 //        return releaseForecastComparison;
 //    }

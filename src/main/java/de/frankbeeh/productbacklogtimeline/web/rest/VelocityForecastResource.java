@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.codahale.metrics.annotation.Timed;
 
-import de.frankbeeh.productbacklogtimeline.domain.ProductBacklogItemComparison;
+import de.frankbeeh.productbacklogtimeline.domain.SprintComparison;
+import de.frankbeeh.productbacklogtimeline.domain.VelocityForecastComparison;
 import de.frankbeeh.productbacklogtimeline.service.ProductTimestampService;
 
 /**
@@ -25,23 +26,23 @@ import de.frankbeeh.productbacklogtimeline.service.ProductTimestampService;
  */
 @RestController
 @RequestMapping("/api")
-public class ProductBacklogResource {
+public class VelocityForecastResource {
 
-    private final Logger log = LoggerFactory.getLogger(ProductBacklogResource.class);
+    private final Logger log = LoggerFactory.getLogger(VelocityForecastResource.class);
 
     @Inject
     private ProductTimestampService productTimestampService;
     
     /**
-     * Get the {@link ProductBacklogItemComparison} between the 'selectedTimestamp' and 'referenceTimestamp'.
+     * Get the {@link VelocityForecastComparison} between the 'selectedTimestamp' and 'referenceTimestamp'.
      */
-    @RequestMapping(value = "/productBacklog",
+    @RequestMapping(value = "/velocityForecast",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<List<ProductBacklogItemComparison>> get(@RequestParam Long selectedTimestamp, @RequestParam Long referenceTimestamp) {
-        log.debug("REST request to get ProductBacklog : {} {}", selectedTimestamp, referenceTimestamp);
-        return Optional.ofNullable(productTimestampService.getProductBacklog(selectedTimestamp, referenceTimestamp))
+    public ResponseEntity<List<SprintComparison>> get(@RequestParam Long selectedTimestamp, @RequestParam Long referenceTimestamp) {
+        log.debug("REST request to get VelocityForecast : {} {}", selectedTimestamp, referenceTimestamp);
+        return Optional.ofNullable(productTimestampService.getVelocityForecast(selectedTimestamp, referenceTimestamp))
             .map(productBacklogItem -> new ResponseEntity<>(
                 productBacklogItem,
                 HttpStatus.OK))

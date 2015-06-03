@@ -1,9 +1,8 @@
 package de.frankbeeh.productbacklogtimeline.repository;
 
-import de.frankbeeh.productbacklogtimeline.domain.ProductTimestamp;
-import org.springframework.data.jpa.repository.*;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import de.frankbeeh.productbacklogtimeline.domain.ProductTimestamp;
 
 /**
  * Spring Data JPA repository for the ProductTimestamp entity.

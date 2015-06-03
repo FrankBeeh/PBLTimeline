@@ -1,11 +1,12 @@
 package de.frankbeeh.productbacklogtimeline.domain;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.joda.time.LocalDate;
 
 import com.google.common.annotations.VisibleForTesting;
 
@@ -23,28 +24,32 @@ public class VelocityForecast {
     public static final String MAXIMUM_VELOCITY_FORECAST = "Max. Vel.";
     public static final List<String> COMPLETION_FORECASTS = Arrays.asList(MINIMUM_VELOCITY_FORECAST, AVERAGE_VELOCITY_FORECAST, MAXIMUM_VELOCITY_FORECAST);
 
-    private final List<Sprint> sprints;
+    private final List<DecoratedSprint> sprints;
     private final List<SprintDataVisitor> visitors;
     private final Map<String, Integer> sortIndexMap;
 
     public VelocityForecast() {
-        this(new ArrayList<Sprint>(), new ArrayList<SprintDataVisitor>() /*, Arrays.asList(new AccumulateEffortDone(), new ComputeProgressForecastByVelocity(AVERAGE_VELOCITY_FORECAST, new ComputeAverageVelocityStrategy()),
-                new ComputeProgressForecastByVelocity(MINIMUM_VELOCITY_FORECAST, new ComputeMinimumVelocityStrategy()), new ComputeProgressForecastByVelocity(MAXIMUM_VELOCITY_FORECAST,
-                        new ComputeMaximumVelocityStrategy()))*/);
+        this(new ArrayList<DecoratedSprint>());
     }
 
     @VisibleForTesting
-    public VelocityForecast(List<Sprint> sprints, List<SprintDataVisitor> visitors) {
+    public VelocityForecast(List<DecoratedSprint> sprints, List<SprintDataVisitor> visitors) {
         this.visitors = visitors;
         this.sprints = sprints;
         this.sortIndexMap = new HashMap<String, Integer>();
     }
 
-    public List<Sprint> getSprints() {
+    public VelocityForecast(List<DecoratedSprint> sprints) {
+    	this(sprints,new ArrayList<SprintDataVisitor>()); /*, Arrays.asList(new AccumulateEffortDone(), new ComputeProgressForecastByVelocity(AVERAGE_VELOCITY_FORECAST, new ComputeAverageVelocityStrategy()),
+        new ComputeProgressForecastByVelocity(MINIMUM_VELOCITY_FORECAST, new ComputeMinimumVelocityStrategy()), new ComputeProgressForecastByVelocity(MAXIMUM_VELOCITY_FORECAST,
+                new ComputeMaximumVelocityStrategy()))*/
+	}
+
+	public List<DecoratedSprint> getSprints() {
         return sprints;
     }
 
-    public void addItem(Sprint sprint) {
+    public void addItem(DecoratedSprint sprint) {
         sprints.add(sprint);
         sortIndexMap.put(sprint.getName(), sprints.size());
     }
@@ -77,8 +82,8 @@ public class VelocityForecast {
         return sortIndex;
     }
 
-    public Sprint getSprintByEndDate(LocalDate endDate) {
-        for (Sprint sprint : sprints) {
+    public DecoratedSprint getSprintByEndDate(LocalDate endDate) {
+        for (DecoratedSprint sprint : sprints) {
             if (endDate.equals(sprint.getEndDate())) {
                 return sprint;
             }

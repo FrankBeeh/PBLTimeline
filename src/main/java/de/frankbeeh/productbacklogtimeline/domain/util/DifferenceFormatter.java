@@ -2,8 +2,9 @@ package de.frankbeeh.productbacklogtimeline.domain.util;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
 
 import com.google.common.base.Strings;
 
@@ -119,7 +120,7 @@ public class DifferenceFormatter {
         if (endDate != null) {
             stringBuilder.append(DateConverter.formatLocalDate(endDate));
             if (referenceEndDate != null) {
-                final long diffDays = ChronoUnit.DAYS.between(referenceEndDate, endDate);
+                final long diffDays = Days.daysBetween(referenceEndDate, endDate).getDays();
                 if (diffDays != 0) {
                     stringBuilder.append("\n(").append(DIFFERENCE_LONG_FORMAT.format(diffDays)).append("d)");
                     if (endDate.isAfter(referenceEndDate)) {

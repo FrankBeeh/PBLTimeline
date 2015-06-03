@@ -1,6 +1,6 @@
 package de.frankbeeh.productbacklogtimeline.domain;
 
-import java.time.LocalDateTime;
+import org.joda.time.LocalDateTime;
 
 import de.frankbeeh.productbacklogtimeline.domain.util.DateConverter;
 
@@ -18,28 +18,29 @@ public class DecoratedProductTimestamp {
 	private final LocalDateTime dateTime;
 	private final String name;
 	private final ProductBacklog productBacklog;
+	private final VelocityForecast velocityForecast;
 
-	// private final VelocityForecast velocityForecast;
 	// private final ReleaseForecast releaseForecast;
 
 	public DecoratedProductTimestamp(LocalDateTime dateTime, String name,
 			ProductBacklog productBacklog,
 			DecoratedProductTimestamp previousProductTimestamp) {
-		this(dateTime, name, productBacklog);
-		// previousProductTimestamp.getVelocityForecast(),
+		this(dateTime, name, productBacklog, previousProductTimestamp
+				.getVelocityForecast());
 		// previousProductTimestamp.getReleaseForecast());
 	}
 
 	public DecoratedProductTimestamp(LocalDateTime dateTime, String name,
-			ProductBacklog productBacklog /*
-										 * , VelocityForecast velocityForecast,
-										 * ReleaseForecast releaseForecast
-										 */) {
+			ProductBacklog productBacklog, VelocityForecast velocityForecast/*
+																			 * ,
+																			 * ReleaseForecast
+																			 * releaseForecast
+																			 */) {
 		this.dateTime = dateTime;
 		this.name = name;
 		this.productBacklog = productBacklog;
-//		this.velocityForecast = velocityForecast;
-//		this.releaseForecast = releaseForecast;
+		this.velocityForecast = velocityForecast;
+		// this.releaseForecast = releaseForecast;
 		update();
 	}
 
@@ -55,29 +56,29 @@ public class DecoratedProductTimestamp {
 		return productBacklog;
 	}
 
-//	public VelocityForecast getVelocityForecast() {
-//		return velocityForecast;
-//	}
-//
-//	public ReleaseForecast getReleaseForecast() {
-//		return releaseForecast;
-//	}
+	public VelocityForecast getVelocityForecast() {
+		return velocityForecast;
+	}
+
+	// public ReleaseForecast getReleaseForecast() {
+	// return releaseForecast;
+	// }
 
 	public LocalDateTime getDateTime() {
 		return dateTime;
 	}
 
 	private void update() {
-//		velocityForecast.updateForecast();
+		// velocityForecast.updateForecast();
 		productBacklog.updateAllItems(null);
-//		releaseForecast.updateAllReleases(productBacklog);
+		// releaseForecast.updateAllReleases(productBacklog);
 	}
 
-//	public NumberByState<Integer> getCountByState() {
-//		return productBacklog.getCountByState();
-//	}
-//
-//	public NumberByState<Double> getEstimateByState() {
-//		return productBacklog.getEstimateByState();
-//	}
+	// public NumberByState<Integer> getCountByState() {
+	// return productBacklog.getCountByState();
+	// }
+	//
+	// public NumberByState<Double> getEstimateByState() {
+	// return productBacklog.getEstimateByState();
+	// }
 }
