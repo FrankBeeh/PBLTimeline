@@ -23,9 +23,9 @@
         <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
         <div ui-view="navbar" ng-cloak=""></div>
         <div class="container">
-            <div class="well" ui-view="content"></div>
-
-            <div class="footer">
+ 			<div class="well" ui-view="timeline"></div>
+ 			<div class="well" ui-view="content"></div>
+	        <div class="footer">
                 <p translate="footer">This is your footer</p>
             </div>
         </div>
@@ -149,6 +149,8 @@
         <script src="scripts/app/entities/velocityForecast/velocityForecast.js"></script>
         <script src="scripts/app/entities/velocityForecast/velocityForecast.controller.js"></script>
         <script src="scripts/components/entities/velocityForecast/velocityForecast.service.js"></script>
+        <script src="scripts/app/productTimeline/productTimeline.controller.js"></script>
+        <script src="scripts/components/productTimeline/productTimeline.service.js"></script>
         <!-- endbuild -->
 </body>
 </html>

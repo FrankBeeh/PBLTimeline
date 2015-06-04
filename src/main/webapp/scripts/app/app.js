@@ -61,9 +61,13 @@ angular.module('productbacklogtimelineApp', ['LocalStorageModule', 'tmh.dynamicL
                 'navbar@': {
                     templateUrl: 'scripts/components/navbar/navbar.html',
                     controller: 'NavbarController'
+                },
+                'timeline@': {
+                    templateUrl: 'scripts/app/productTimeline/productTimeline.html',
+                    controller: 'ProductTimelineController'
                 }
-            },
-            resolve: {
+             },
+             resolve: {
                 authorize: ['Auth',
                     function (Auth) {
                         return Auth.authorize();

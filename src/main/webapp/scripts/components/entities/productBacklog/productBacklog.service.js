@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('productbacklogtimelineApp')
-    .factory('ProductBacklog', function ($resource, DateUtils) {
+    .factory('ProductBacklog', function ($resource) {
         return $resource('api/productBacklog', {}, {
             'get': {
                 method: 'GET',

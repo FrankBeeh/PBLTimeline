@@ -1,5 +1,6 @@
 package de.frankbeeh.productbacklogtimeline.web.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,25 +28,36 @@ import de.frankbeeh.productbacklogtimeline.service.ProductTimestampService;
 @RequestMapping("/api")
 public class ProductBacklogResource {
 
-    private final Logger log = LoggerFactory.getLogger(ProductBacklogResource.class);
+	private final Logger log = LoggerFactory
+			.getLogger(ProductBacklogResource.class);
 
-    @Inject
-    private ProductTimestampService productTimestampService;
-    
-    /**
-     * Get the {@link ProductBacklogItemComparison} between the 'selectedTimestamp' and 'referenceTimestamp'.
-     */
-    @RequestMapping(value = "/productBacklog",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<List<ProductBacklogItemComparison>> get(@RequestParam Long selectedTimestamp, @RequestParam Long referenceTimestamp) {
-        log.debug("REST request to get ProductBacklog : {} {}", selectedTimestamp, referenceTimestamp);
-        return Optional.ofNullable(productTimestampService.getProductBacklog(selectedTimestamp, referenceTimestamp))
-            .map(productBacklogItem -> new ResponseEntity<>(
-                productBacklogItem,
-                HttpStatus.OK))
-            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
+	@Inject
+	private ProductTimestampService productTimestampService;
+
+	/**
+	 * Get the {@link ProductBacklogItemComparison} between the
+	 * 'selectedTimestamp' and 'referenceTimestamp'.
+	 */
+	@RequestMapping(value = "/productBacklog", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<List<ProductBacklogItemComparison>> get(
+			@RequestParam(required=false) Long selectedTimestamp,
+			@RequestParam(required=false) Long referenceTimestamp) {
+		log.debug("REST request to get ProductBacklog : {} {}",
+				selectedTimestamp, referenceTimestamp);
+		if (selectedTimestamp==null){
+			return new ResponseEntity<>(new ArrayList<ProductBacklogItemComparison>(), HttpStatus.OK);
+		}
+		if (referenceTimestamp == null) {
+			referenceTimestamp = selectedTimestamp;
+		}
+		return Optional
+				.ofNullable(
+						productTimestampService.getProductBacklog(
+								selectedTimestamp, referenceTimestamp))
+				.map(productBacklogItem -> new ResponseEntity<>(
+						productBacklogItem, HttpStatus.OK))
+				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	}
 
 }

@@ -72,7 +72,11 @@
                     "maxlength": "Your e-mail cannot be longer than 50 characters."
                 }
             }
-        }
+        },
+		"productTimeline" : {
+    		"selected": "Selected Timestamp",
+        	"reference": "Reference Timestamp"
+		}
     },
     "entity": {
         "action": {

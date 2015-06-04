@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('productbacklogtimelineApp')
-    .controller('VelocityForecastController', function ($scope, VelocityForecast, ProductTimestamp) {
+    .controller('VelocityForecastController', function ($scope, VelocityForecast, ProductTimestamp, ProductTimelineScope) {
         $scope.velocityForecasts = [];
         $scope.producttimestamps = ProductTimestamp.query();
         $scope.loadAll = function() {
-        	VelocityForecast.query({selectedTimestamp: '2', referenceTimestamp: '1'}, function(result) {
+        	VelocityForecast.query({selectedTimestamp: ProductTimelineScope.selectedTimestamp, referenceTimestamp: ProductTimelineScope.referenceTimestamp}, function(result) {
                $scope.velocityForecasts = result;
             });
         };

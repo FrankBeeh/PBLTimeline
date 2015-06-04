@@ -1,0 +1,12 @@
+<div>
+	<label translate="global.productTimeline.selected">Selected Timestamp</label>
+	<select ng-model="timelineScope.selectedTimestamp"
+		ng-options="timestamp.id as (timestamp.dateTime | date:'dd.MM.yyyy') +': '+ timestamp.name for timestamp in producttimestamps"
+		ng-change="reloadRoute()">
+	</select>
+	<label translate="global.productTimeline.reference">Reference Timestamp</label>
+	<select ng-model="timelineScope.referenceTimestamp"
+		ng-options="timestamp.id as (timestamp.dateTime | date:'dd.MM.yyyy') +': '+ timestamp.name for timestamp in producttimestamps"
+		ng-change="reloadRoute()">
+	</select>
+</div>
