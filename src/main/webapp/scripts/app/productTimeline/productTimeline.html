@@ -9,4 +9,5 @@
 		ng-options="timestamp.id as (timestamp.dateTime | date:'dd.MM.yyyy') +': '+ timestamp.name for timestamp in producttimestamps"
 		ng-change="reloadRoute()">
 	</select>
+	<div class="button" ngf-select ng-model="files">Import Product Backlog Items</div>
 </div>
