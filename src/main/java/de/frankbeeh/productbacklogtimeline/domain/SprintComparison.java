@@ -1,5 +1,7 @@
 package de.frankbeeh.productbacklogtimeline.domain;
 
+import java.math.BigDecimal;
+
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -57,20 +59,45 @@ public class SprintComparison {
     }
 
     public ComparedValue getComparedAccumulatedEffortDone() {
-        return DifferenceFormatter.formatDoubleDifference(sprint.getAccumulatedEffortDone(), referenceSprint.getAccumulatedEffortDone(), false);
+        return DifferenceFormatter.formatBigDecimalDifference(sprint.getAccumulatedEffortDone(), referenceSprint.getAccumulatedEffortDone(), false);
     }
 
-    public Double getAccumulatedEffortDone() {
+    public BigDecimal getAccumulatedEffortDone() {
         return sprint.getAccumulatedEffortDone();
     }
 
-    public ComparedValue getComparedProgressForecastBasedOnHistory(String progressForecastName) {
-        return DifferenceFormatter.formatDoubleDifference(sprint.getProgressForecastBasedOnHistory(progressForecastName), referenceSprint.getProgressForecastBasedOnHistory(progressForecastName),
+    
+    public ComparedValue getComparedProgressForecastBasedOnMinVel() {
+    	return getComparedProgressForecastBasedOnHistory(VelocityForecast.MINIMUM_VELOCITY_FORECAST);
+    }
+    
+    public ComparedValue getComparedProgressForecastBasedOnAvgVel() {
+    	return getComparedProgressForecastBasedOnHistory(VelocityForecast.AVERAGE_VELOCITY_FORECAST);
+    }
+
+    public ComparedValue getComparedProgressForecastBasedOnMaxVel() {
+    	return getComparedProgressForecastBasedOnHistory(VelocityForecast.MAXIMUM_VELOCITY_FORECAST);
+    }   
+    
+    private ComparedValue getComparedProgressForecastBasedOnHistory(String progressForecastName) {
+        return DifferenceFormatter.formatBigDecimalDifference(sprint.getProgressForecastBasedOnHistory(progressForecastName), referenceSprint.getProgressForecastBasedOnHistory(progressForecastName),
                 false);
     }
 
-    public ComparedValue getComparedAccumulatedProgressForecastBasedOnHistory(String progressForecastName) {
-        return DifferenceFormatter.formatDoubleDifference(sprint.getAccumulatedProgressForecastBasedOnHistory(progressForecastName),
+    public ComparedValue getComparedAccumulatedProgressForecastBasedOnMinVel() {
+    	return getComparedAccumulatedProgressForecastBasedOnHistory(VelocityForecast.MINIMUM_VELOCITY_FORECAST);
+    }
+    
+    public ComparedValue getComparedAccumulatedProgressForecastBasedOnAvgVel() {
+    	return getComparedAccumulatedProgressForecastBasedOnHistory(VelocityForecast.AVERAGE_VELOCITY_FORECAST);
+    }
+    
+    public ComparedValue getComparedAccumulatedProgressForecastBasedOnMaxVel() {
+    	return getComparedAccumulatedProgressForecastBasedOnHistory(VelocityForecast.MAXIMUM_VELOCITY_FORECAST);
+    }
+    
+    private ComparedValue getComparedAccumulatedProgressForecastBasedOnHistory(String progressForecastName) {
+        return DifferenceFormatter.formatBigDecimalDifference(sprint.getAccumulatedProgressForecastBasedOnHistory(progressForecastName),
                 referenceSprint.getAccumulatedProgressForecastBasedOnHistory(progressForecastName), false);
     }
 

@@ -5,13 +5,33 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th translate="productbacklogtimelineApp.velocityForecast.name">Name</th>
-                    <th translate="productbacklogtimelineApp.velocityForecast.startDate">Rank</th>
-                    <th translate="productbacklogtimelineApp.velocityForecast.endDate">Estimate</th>
-                    <th translate="productbacklogtimelineApp.velocityForecast.state">State</th>
-                    <th></th>
+                 <tr>
+                    <th rowspan="3" translate="productbacklogtimelineApp.velocityForecast.name">Name</th>
+                    <th rowspan="3" translate="productbacklogtimelineApp.velocityForecast.startDate">Rank</th>
+                    <th rowspan="3" translate="productbacklogtimelineApp.velocityForecast.endDate">Estimate</th>
+                    <th rowspan="3" translate="productbacklogtimelineApp.velocityForecast.state">State</th>
+                    <th colspan="7" translate="productbacklogtimelineApp.velocityForecast.perSprint">Per Sprint</th>
+                    <th colspan="4" translate="productbacklogtimelineApp.velocityForecast.accumulated">Accumulated</th>
                 </tr>
+                <tr>
+                    <th colspan="2" translate="productbacklogtimelineApp.velocityForecast.forecast">Forecast</th>
+					<th colspan="2" translate="productbacklogtimelineApp.velocityForecast.done">Done</th>
+					<th colspan="3" translate="productbacklogtimelineApp.velocityForecast.progressForecast">Progress Forecast</th>
+  					<th rowspan="2" translate="productbacklogtimelineApp.velocityForecast.done">Done</th>
+					<th colspan="3" translate="productbacklogtimelineApp.velocityForecast.progressForecast">Progress Forecast</th>
+                </tr>
+				<tr>
+                    <th translate="productbacklogtimelineApp.velocityForecast.capacity">Capacity</th>
+                    <th translate="productbacklogtimelineApp.velocityForecast.effort">Effort</th>
+                    <th translate="productbacklogtimelineApp.velocityForecast.capacity">Capacity</th>
+                    <th translate="productbacklogtimelineApp.velocityForecast.effort">Effort</th>
+                    <th translate="productbacklogtimelineApp.velocityForecast.minVel">Min. Vel.</th>
+                    <th translate="productbacklogtimelineApp.velocityForecast.avgVel">Avg. Vel.</th>
+					<th translate="productbacklogtimelineApp.velocityForecast.maxVel">Max. Vel.</th>
+                    <th translate="productbacklogtimelineApp.velocityForecast.minVel">Min. Vel.</th>
+                    <th translate="productbacklogtimelineApp.velocityForecast.avgVel">Avg. Vel.</th>
+					<th translate="productbacklogtimelineApp.velocityForecast.maxVel">Max. Vel.</th>
+				</tr>
             </thead>
             <tbody>
                 <tr ng-repeat="velocityForecast in velocityForecasts">
@@ -19,6 +39,17 @@
                     <td ng-class="velocityForecast.comparedStartDate.styleClass">{{velocityForecast.comparedStartDate.comparedValue}}</td>
                     <td ng-class="velocityForecast.comparedEndDate.styleClass">{{velocityForecast.comparedEndDate.comparedValue}}</td>
                     <td ng-class="velocityForecast.comparedState.styleClass">{{velocityForecast.comparedState.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedCapacityForecast.styleClass">{{velocityForecast.comparedCapacityForecast.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedEffortForecast.styleClass">{{velocityForecast.comparedEffortForecast.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedCapacityDone.styleClass">{{velocityForecast.comparedCapacityDone.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedEffortDone.styleClass">{{velocityForecast.comparedEffortDone.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedProgressForecastBasedOnMinVel.styleClass">{{velocityForecast.comparedProgressForecastBasedOnMinVel.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedProgressForecastBasedOnAvgVel.styleClass">{{velocityForecast.comparedProgressForecastBasedOnAvgVel.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedProgressForecastBasedOnMaxVel.styleClass">{{velocityForecast.comparedProgressForecastBasedOnMaxVel.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedAccumulatedEffortDone.styleClass">{{velocityForecast.comparedAccumulatedEffortDone.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedAccumulatedProgressForecastBasedOnMinVel.styleClass">{{velocityForecast.comparedAccumulatedProgressForecastBasedOnMinVel.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedAccumulatedProgressForecastBasedOnAvgVel.styleClass">{{velocityForecast.comparedAccumulatedProgressForecastBasedOnAvgVel.comparedValue}}</td>
+                    <td ng-class="velocityForecast.comparedAccumulatedProgressForecastBasedOnMaxVel.styleClass">{{velocityForecast.comparedAccumulatedProgressForecastBasedOnMaxVel.comparedValue}}</td>
                 </tr>
             </tbody>
         </table>

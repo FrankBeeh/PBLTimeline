@@ -69,7 +69,7 @@ public class DecoratedProductTimestamp {
 	}
 
 	private void update() {
-		// velocityForecast.updateForecast();
+		velocityForecast.updateForecast();
 		productBacklog.updateAllItems(null);
 		// releaseForecast.updateAllReleases(productBacklog);
 	}

@@ -1,6 +1,7 @@
 package de.frankbeeh.productbacklogtimeline.domain;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,9 +23,9 @@ import de.frankbeeh.productbacklogtimeline.service.visitor.SprintDataVisitor;
  */
 public class DecoratedSprint {
     private final Sprint data;
-    private final Map<String, Double> progressForecastBasedOnHistory;
-    private final Map<String, Double> accumulatedProgressForecastBasedOnHistory;
-    private Double accumulatedEffortDone;
+    private final Map<String, BigDecimal> progressForecastBasedOnHistory;
+    private final Map<String, BigDecimal> accumulatedProgressForecastBasedOnHistory;
+    private BigDecimal accumulatedEffortDone;
 
     
     public DecoratedSprint(String name, LocalDate startDate, LocalDate endDate, BigDecimal capacityForecast, BigDecimal effortForecast, BigDecimal capacityDone, BigDecimal effortDone) {
@@ -33,8 +34,8 @@ public class DecoratedSprint {
 
     public DecoratedSprint(Sprint sprint) {
     	this.data = sprint;
-        this.progressForecastBasedOnHistory = new HashMap<String, Double>();
-        this.accumulatedProgressForecastBasedOnHistory = new HashMap<String, Double>();
+        this.progressForecastBasedOnHistory = new HashMap<String, BigDecimal>();
+        this.accumulatedProgressForecastBasedOnHistory = new HashMap<String, BigDecimal>();
 	}
 
 	public String getName() {
@@ -65,27 +66,27 @@ public class DecoratedSprint {
         return data.getEffortDone();
     }
 
-    public void setAccumulatedEffortDone(Double accumulatedEffortDone) {
-        this.accumulatedEffortDone = accumulatedEffortDone;
+    public void setAccumulatedEffortDone(BigDecimal accumulatedEffortDone2) {
+        this.accumulatedEffortDone = accumulatedEffortDone2;
     }
 
-    public Double getAccumulatedEffortDone() {
+    public BigDecimal getAccumulatedEffortDone() {
         return accumulatedEffortDone;
     }
 
-    public void setProgressForecastBasedOnHistory(String progressForecastName, Double progressForecast) {
+    public void setProgressForecastBasedOnHistory(String progressForecastName, BigDecimal progressForecast) {
         progressForecastBasedOnHistory.put(progressForecastName, roundToOneDecimal(progressForecast));
     }
 
-    public Double getProgressForecastBasedOnHistory(String progressForecastName) {
+    public BigDecimal getProgressForecastBasedOnHistory(String progressForecastName) {
         return progressForecastBasedOnHistory.get(progressForecastName);
     }
 
-    public void setAccumulatedProgressForecastBasedOnHistory(String progressForecastName, Double progressForecast) {
+    public void setAccumulatedProgressForecastBasedOnHistory(String progressForecastName, BigDecimal progressForecast) {
         accumulatedProgressForecastBasedOnHistory.put(progressForecastName, roundToOneDecimal(progressForecast));
     }
 
-    public Double getAccumulatedProgressForecastBasedOnHistory(String progressForecastName) {
+    public BigDecimal getAccumulatedProgressForecastBasedOnHistory(String progressForecastName) {
         return accumulatedProgressForecastBasedOnHistory.get(progressForecastName);
     }
 
@@ -93,8 +94,8 @@ public class DecoratedSprint {
         visitor.visit(this);
     }
 
-    public Double getAccumulatedEffortDoneOrProgressForcast(String progressForecastName) {
-        final Double accumulatedEffortDone = getAccumulatedEffortDone();
+    public BigDecimal getAccumulatedEffortDoneOrProgressForcast(String progressForecastName) {
+        final BigDecimal accumulatedEffortDone = getAccumulatedEffortDone();
         if (accumulatedEffortDone != null) {
             return accumulatedEffortDone;
         }
@@ -106,11 +107,11 @@ public class DecoratedSprint {
         return new ReflectionToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).toString();
     }
 
-    private Double roundToOneDecimal(Double value) {
+    private BigDecimal roundToOneDecimal(BigDecimal value) {
         if (value == null) {
             return value;
         }
-        return Math.round(value.doubleValue() * 10.0) / 10.0;
+        return value.setScale(1, RoundingMode.HALF_UP);
     }
 
     public State getState() {

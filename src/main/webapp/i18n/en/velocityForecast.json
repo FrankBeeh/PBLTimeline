@@ -7,7 +7,17 @@
             "name": "Name",
             "startDate": "Start Date",
             "endDate": "End Date",
-            "state": "State"
+            "state": "State",
+            "forecast": "Forecast",
+            "done": "Done",
+            "capacity": "Capacity",
+            "effort": "Effort",
+            "perSprint": "Per Sprint",
+            "accumulated": "Accumulated",
+            "progressForecast": "Progress Forecast",
+            "minVel": "Min. Vel.",
+            "avgVel": "Avg. Vel.",
+            "maxVel": "Max. Vel."
         }
     }
 }
