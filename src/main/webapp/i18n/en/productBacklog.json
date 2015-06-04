@@ -10,8 +10,12 @@
             "estimate": "Estimate",
             "state": "State",
 			"accumulatedEstimate": "Acc. Estimate",
+			"completionForecast": "Completion Forecast",
             "productTimestamp": "productTimestamp",
-            "rank": "Rank"
+            "rank": "Rank",
+            "minVel": "Min. Vel.",
+            "avgVel": "Avg. Vel.",
+            "maxVel": "Max. Vel."
         }
     }
 }

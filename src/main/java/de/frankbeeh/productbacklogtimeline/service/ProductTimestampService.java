@@ -52,18 +52,20 @@ public class ProductTimestampService {
 			Long selectedTimestamp, Long referenceTimestamp) {
 		final ProductTimestampComparison productTimestampComparison = new ProductTimestampComparison();
 		productTimestampComparison
-				.setSelectedTimestamp(new DecoratedProductTimestamp(null, null,
-						createProductBacklog(productBacklogItemRepository
-								.findByProductTimestampId(selectedTimestamp)),
-						createVelocityForecast(sprintRepository
-								.findByProductTimestampId(selectedTimestamp))));
+				.setSelectedTimestamp(createTimestamp(selectedTimestamp));
 		productTimestampComparison
-				.setReferenceTimestamp(new DecoratedProductTimestamp(null,
-						null, createProductBacklog(productBacklogItemRepository
-								.findByProductTimestampId(referenceTimestamp)),
-						createVelocityForecast(sprintRepository
-								.findByProductTimestampId(referenceTimestamp))));
+				.setReferenceTimestamp(createTimestamp(referenceTimestamp));
 		return productTimestampComparison;
+	}
+
+	private DecoratedProductTimestamp createTimestamp(Long referenceTimestamp) {
+		return new DecoratedProductTimestamp(
+				null,
+				null,
+				createProductBacklog(productBacklogItemRepository
+						.findByProductTimestampIdOrderByRankAsc(referenceTimestamp)),
+				createVelocityForecast(sprintRepository
+						.findByProductTimestampId(referenceTimestamp)));
 	}
 
 	private VelocityForecast createVelocityForecast(List<Sprint> sprints) {

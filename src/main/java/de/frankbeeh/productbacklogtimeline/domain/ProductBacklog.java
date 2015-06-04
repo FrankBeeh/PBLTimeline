@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import de.frankbeeh.productbacklogtimeline.service.visitor.AccumulateEstimate;
+import de.frankbeeh.productbacklogtimeline.service.visitor.ForecastSprintOfCompletion;
 import de.frankbeeh.productbacklogtimeline.service.visitor.ProductBacklogItemVisitor;
 
 /**
@@ -17,18 +18,20 @@ import de.frankbeeh.productbacklogtimeline.service.visitor.ProductBacklogItemVis
 public class ProductBacklog {
 	private final LinkedList<DecoratedProductBacklogItem> items;
 
-	 private final ProductBacklogItemVisitor[] visitors;
+	private final ProductBacklogItemVisitor[] visitors;
+
 	// private final ProductBacklogSortingStrategy sortingStrategy;
 
 	public ProductBacklog() {
-		// this(new JiraProductBacklogSortingStrategy(), new
-		// RankProductBacklogItem(), new AccumulateEstimate(), new
-		// ForecastSprintOfCompletion(VelocityForecast.AVERAGE_VELOCITY_FORECAST),
-		// new
-		// ForecastSprintOfCompletion(VelocityForecast.MINIMUM_VELOCITY_FORECAST),
-		// new
-		// ForecastSprintOfCompletion(VelocityForecast.MAXIMUM_VELOCITY_FORECAST));
-		this.visitors = new ProductBacklogItemVisitor[]{new AccumulateEstimate()};
+		// new RankProductBacklogItem()
+		this.visitors = new ProductBacklogItemVisitor[] {
+				new AccumulateEstimate(),
+				new ForecastSprintOfCompletion(
+						VelocityForecast.AVERAGE_VELOCITY_FORECAST),
+				new ForecastSprintOfCompletion(
+						VelocityForecast.MINIMUM_VELOCITY_FORECAST),
+				new ForecastSprintOfCompletion(
+						VelocityForecast.MAXIMUM_VELOCITY_FORECAST) };
 		this.items = new LinkedList<DecoratedProductBacklogItem>();
 	}
 
@@ -44,17 +47,18 @@ public class ProductBacklog {
 		this();
 		this.items.addAll(items);
 	}
-//
-//	public void addItem(ProductBacklogItem productBacklogItem) {
-//		items.add(productBacklogItem);
-//	}
+
+	//
+	// public void addItem(ProductBacklogItem productBacklogItem) {
+	// items.add(productBacklogItem);
+	// }
 
 	public List<DecoratedProductBacklogItem> getItems() {
 		return items;
 	}
 
 	public void updateAllItems(VelocityForecast selectedVelocityForecast) {
-//		sortingStrategy.sortProductBacklog(this, selectedVelocityForecast);
+		// sortingStrategy.sortProductBacklog(this, selectedVelocityForecast);
 		for (final ProductBacklogItemVisitor visitor : visitors) {
 			visitor.reset();
 			for (final DecoratedProductBacklogItem item : items) {
@@ -92,32 +96,33 @@ public class ProductBacklog {
 		return items.size();
 	}
 
-//	public List<ProductBacklogItem> getMatchingProductBacklogItems(
-//			ReleaseCriteria criteria) {
-//		final List<ProductBacklogItem> matchingProductBacklogItems = new ArrayList<ProductBacklogItem>();
-//		for (final ProductBacklogItem item : getItems()) {
-//			if (criteria.isMatching(item)) {
-//				matchingProductBacklogItems.add(item);
-//			}
-//		}
-//		return matchingProductBacklogItems;
-//	}
+	// public List<ProductBacklogItem> getMatchingProductBacklogItems(
+	// ReleaseCriteria criteria) {
+	// final List<ProductBacklogItem> matchingProductBacklogItems = new
+	// ArrayList<ProductBacklogItem>();
+	// for (final ProductBacklogItem item : getItems()) {
+	// if (criteria.isMatching(item)) {
+	// matchingProductBacklogItems.add(item);
+	// }
+	// }
+	// return matchingProductBacklogItems;
+	// }
 
-//	public IntegerByState getCountByState() {
-//		final IntegerByState countByState = new IntegerByState();
-//		for (ProductBacklogItem item : getItems()) {
-//			final State state = item.getState();
-//			countByState.add(state, 1);
-//		}
-//		return countByState;
-//	}
-//
-//	public NumberByState<Double> getEstimateByState() {
-//		final DoubleByState estimateByState = new DoubleByState();
-//		for (ProductBacklogItem item : getItems()) {
-//			final State state = item.getState();
-//			estimateByState.add(state, item.getEstimate());
-//		}
-//		return estimateByState;
-//	}
+	// public IntegerByState getCountByState() {
+	// final IntegerByState countByState = new IntegerByState();
+	// for (ProductBacklogItem item : getItems()) {
+	// final State state = item.getState();
+	// countByState.add(state, 1);
+	// }
+	// return countByState;
+	// }
+	//
+	// public NumberByState<Double> getEstimateByState() {
+	// final DoubleByState estimateByState = new DoubleByState();
+	// for (ProductBacklogItem item : getItems()) {
+	// final State state = item.getState();
+	// estimateByState.add(state, item.getEstimate());
+	// }
+	// return estimateByState;
+	// }
 }

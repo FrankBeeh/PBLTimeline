@@ -23,7 +23,7 @@ import com.google.common.hash.Hashing;
  * </ul>
  */
 public class DecoratedProductBacklogItem {
-	private final Map<String, Sprint> completionForecast;
+	private final Map<String, DecoratedSprint> completionForecast;
 	private BigDecimal accumulatedEstimate;
 	private final ProductBacklogItem data;
 
@@ -36,7 +36,7 @@ public class DecoratedProductBacklogItem {
 
 	public DecoratedProductBacklogItem(ProductBacklogItem productBacklogItem) {
 		this.data = productBacklogItem;
-		this.completionForecast = new HashMap<String, Sprint>();
+		this.completionForecast = new HashMap<String, DecoratedSprint>();
 	}
 
 	public void setAccumulatedEstimate(BigDecimal accumulatedEstimate) {
@@ -46,13 +46,13 @@ public class DecoratedProductBacklogItem {
 	public BigDecimal getAccumulatedEstimate() {
 		return accumulatedEstimate;
 	}
-
-	public Sprint getCompletionForecast(String progressForecastName) {
+	
+	public DecoratedSprint getCompletionForecast(String progressForecastName) {
 		return completionForecast.get(progressForecastName);
 	}
 
-	public void setCompletionForecast(String progressForecastName, Sprint sprint) {
-		completionForecast.put(progressForecastName, sprint);
+	public void setCompletionForecast(String progressForecastName, DecoratedSprint completionSprintForecast) {
+		completionForecast.put(progressForecastName, completionSprintForecast);
 	}
 
 	public Long getRank() {

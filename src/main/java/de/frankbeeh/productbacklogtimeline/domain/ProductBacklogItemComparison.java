@@ -23,7 +23,7 @@ public class ProductBacklogItemComparison {
     public ProductBacklogItemComparison(DecoratedProductBacklogItem productBacklogItem, DecoratedProductBacklogItem referenceProductBacklogItem) {
         this.productBacklogItem = productBacklogItem;
         if (referenceProductBacklogItem == null) {
-            this.referenceProductBacklogItem = new DecoratedProductBacklogItem(null, null, null, null, State.New, null, null, null);
+            this.referenceProductBacklogItem = new DecoratedProductBacklogItem(null, null, null, null, State.Missing, null, null, null);
         } else {
             this.referenceProductBacklogItem = referenceProductBacklogItem;
         }
@@ -41,7 +41,19 @@ public class ProductBacklogItemComparison {
         return DifferenceFormatter.formatTextualDifference(productBacklogItem.getDescription(), referenceProductBacklogItem.getDescription());
     }
 
-    public ComparedValue getComparedCompletionForecast(String progressForecastName) {
+	public ComparedValue getCompletionForecastForMinVel(){
+		return getComparedCompletionForecast(VelocityForecast.MINIMUM_VELOCITY_FORECAST);
+	}
+	
+	public ComparedValue getCompletionForecastForAvgVel(){
+		return getComparedCompletionForecast(VelocityForecast.AVERAGE_VELOCITY_FORECAST);
+	}
+	
+	public ComparedValue getCompletionForecastForMaxVel(){
+		return getComparedCompletionForecast(VelocityForecast.MAXIMUM_VELOCITY_FORECAST);
+	}
+    
+    private ComparedValue getComparedCompletionForecast(String progressForecastName) {
         return DifferenceFormatter.formatSprintDifference(productBacklogItem.getCompletionForecast(progressForecastName), referenceProductBacklogItem.getCompletionForecast(progressForecastName));
     }
 

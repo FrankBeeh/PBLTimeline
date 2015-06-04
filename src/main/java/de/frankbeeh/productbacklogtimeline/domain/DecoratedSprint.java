@@ -116,7 +116,7 @@ public class DecoratedSprint {
 
     public State getState() {
         if (getEndDate() == null) {
-            return State.New;
+            return State.Missing;
         }
         if (getEffortDone() != null) {
             return State.Done;

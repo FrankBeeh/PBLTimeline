@@ -6,14 +6,19 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th translate="productbacklogtimelineApp.productBacklog.pbiKey">PbiKey</th>
-                    <th translate="productbacklogtimelineApp.productBacklog.rank">Rank</th>
-                    <th translate="productbacklogtimelineApp.productBacklog.estimate">Estimate</th>
-                    <th translate="productbacklogtimelineApp.productBacklog.state">State</th>
-                    <th translate="productbacklogtimelineApp.productBacklog.title">Title</th>
-                    <th translate="productbacklogtimelineApp.productBacklog.description">Description</th>
-                    <th translate="productbacklogtimelineApp.productBacklog.accumulatedEstimate">Estimate</th>
-                    <th></th>
+                    <th rowspan="2" translate="productbacklogtimelineApp.productBacklog.pbiKey">PbiKey</th>
+                    <th rowspan="2" translate="productbacklogtimelineApp.productBacklog.rank">Rank</th>
+                    <th rowspan="2" translate="productbacklogtimelineApp.productBacklog.estimate">Estimate</th>
+                    <th rowspan="2" translate="productbacklogtimelineApp.productBacklog.state">State</th>
+                    <th rowspan="2" translate="productbacklogtimelineApp.productBacklog.title">Title</th>
+                    <th rowspan="2" translate="productbacklogtimelineApp.productBacklog.description">Description</th>
+                    <th rowspan="2" translate="productbacklogtimelineApp.productBacklog.accumulatedEstimate">Estimate</th>
+                    <th colspan="3" translate="productbacklogtimelineApp.productBacklog.completionForecast">Completion Forecast</th>
+                </tr>
+                <tr>
+                    <th translate="productbacklogtimelineApp.productBacklog.minVel">Min. Vel.</th>
+                    <th translate="productbacklogtimelineApp.productBacklog.avgVel">Avg. Vel.</th>
+                    <th translate="productbacklogtimelineApp.productBacklog.maxVel">Max. Vel.</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +30,9 @@
                     <td ng-class="productBacklogItem.comparedTitle.styleClass">{{productBacklogItem.comparedTitle.comparedValue}}</td>
                     <td ng-class="productBacklogItem.comparedDescription.styleClass">{{productBacklogItem.comparedDescription.comparedValue}}</td>
                     <td ng-class="productBacklogItem.comparedAccumulatedEstimate.styleClass">{{productBacklogItem.comparedAccumulatedEstimate.comparedValue}}</td>
+                    <td ng-class="productBacklogItem.completionForecastForMinVel.styleClass">{{productBacklogItem.completionForecastForMinVel.comparedValue}}</td>
+                    <td ng-class="productBacklogItem.completionForecastForAvgVel.styleClass">{{productBacklogItem.completionForecastForAvgVel.comparedValue}}</td>
+                    <td ng-class="productBacklogItem.completionForecastForMaxVel.styleClass">{{productBacklogItem.completionForecastForMaxVel.comparedValue}}</td>
                 </tr>
             </tbody>
         </table>

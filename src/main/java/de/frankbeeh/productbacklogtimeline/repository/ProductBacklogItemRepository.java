@@ -10,5 +10,5 @@ import de.frankbeeh.productbacklogtimeline.domain.ProductBacklogItem;
  * Spring Data JPA repository for the ProductBacklogItem entity.
  */
 public interface ProductBacklogItemRepository extends JpaRepository<ProductBacklogItem,Long> {
-	List<ProductBacklogItem> findByProductTimestampId(Long selectedTimestamp);
+	List<ProductBacklogItem> findByProductTimestampIdOrderByRankAsc(Long selectedTimestamp);
 }

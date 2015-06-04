@@ -1,5 +1,6 @@
 package de.frankbeeh.productbacklogtimeline.domain;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -49,9 +50,16 @@ public class VelocityForecast {
 	}
 
 	public VelocityForecast(List<DecoratedSprint> sprints) {
-    	this(sprints,Arrays.asList(new AccumulateEffortDone(), new ComputeProgressForecastByVelocity(AVERAGE_VELOCITY_FORECAST, new ComputeAverageVelocityStrategy()),
-        new ComputeProgressForecastByVelocity(MINIMUM_VELOCITY_FORECAST, new ComputeMinimumVelocityStrategy()), new ComputeProgressForecastByVelocity(MAXIMUM_VELOCITY_FORECAST,
-                new ComputeMaximumVelocityStrategy())));
+		this(sprints, Arrays.asList(new AccumulateEffortDone(),
+				new ComputeProgressForecastByVelocity(
+						AVERAGE_VELOCITY_FORECAST,
+						new ComputeAverageVelocityStrategy()),
+				new ComputeProgressForecastByVelocity(
+						MINIMUM_VELOCITY_FORECAST,
+						new ComputeMinimumVelocityStrategy()),
+				new ComputeProgressForecastByVelocity(
+						MAXIMUM_VELOCITY_FORECAST,
+						new ComputeMaximumVelocityStrategy())));
 	}
 
 	public List<DecoratedSprint> getSprints() {
@@ -72,17 +80,18 @@ public class VelocityForecast {
 		}
 	}
 
-	public Sprint getCompletionSprintForecast(String progressForecastName,
-			Double accumulatedEstimate) {
-		// for (final Sprint sprint : sprints) {
-		// final Double accumulatedEffortDoneOrProgressForcast =
-		// sprint.getAccumulatedEffortDoneOrProgressForcast(progressForecastName);
-		// if (accumulatedEffortDoneOrProgressForcast != null &&
-		// accumulatedEstimate != null && accumulatedEstimate <=
-		// accumulatedEffortDoneOrProgressForcast) {
-		// return sprint;
-		// }
-		// }
+	public DecoratedSprint getCompletionSprintForecast(String progressForecastName,
+			BigDecimal accumulatedEstimate) {
+		for (final DecoratedSprint sprint : sprints) {
+			final BigDecimal accumulatedEffortDoneOrProgressForcast = sprint
+					.getAccumulatedEffortDoneOrProgressForcast(progressForecastName);
+			if (accumulatedEffortDoneOrProgressForcast != null
+					&& accumulatedEstimate != null
+					&& accumulatedEstimate
+							.compareTo(accumulatedEffortDoneOrProgressForcast) <= 0) {
+				return sprint;
+			}
+		}
 		return null;
 	}
 
