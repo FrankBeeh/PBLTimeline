@@ -53,7 +53,7 @@ public class ProductBacklogResource {
 		}
 		return Optional
 				.ofNullable(
-						productTimestampService.getProductBacklog(
+						productTimestampService.getProductBacklogComparison(
 								selectedTimestamp, referenceTimestamp))
 				.map(productBacklogItem -> new ResponseEntity<>(
 						productBacklogItem, HttpStatus.OK))

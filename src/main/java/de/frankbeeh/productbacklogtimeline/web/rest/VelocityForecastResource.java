@@ -54,7 +54,7 @@ public class VelocityForecastResource {
 		}
 		return Optional
 				.ofNullable(
-						productTimestampService.getVelocityForecast(
+						productTimestampService.getVelocityForecastComparison(
 								selectedTimestamp, referenceTimestamp))
 				.map(productBacklogItem -> new ResponseEntity<>(
 						productBacklogItem, HttpStatus.OK))

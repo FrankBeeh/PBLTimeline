@@ -23,7 +23,7 @@ public class ProductBacklogItemComparison {
     public ProductBacklogItemComparison(DecoratedProductBacklogItem productBacklogItem, DecoratedProductBacklogItem referenceProductBacklogItem) {
         this.productBacklogItem = productBacklogItem;
         if (referenceProductBacklogItem == null) {
-            this.referenceProductBacklogItem = new DecoratedProductBacklogItem(null, null, null, null, State.Missing, null, null, null);
+            this.referenceProductBacklogItem = new DecoratedProductBacklogItem(null, null, null, null, State.Missing, null);
         } else {
             this.referenceProductBacklogItem = referenceProductBacklogItem;
         }

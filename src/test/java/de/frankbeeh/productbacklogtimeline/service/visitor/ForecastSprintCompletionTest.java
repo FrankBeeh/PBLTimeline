@@ -41,7 +41,7 @@ public class ForecastSprintCompletionTest {
     }
 
     private DecoratedProductBacklogItem createProductBacklogItem(BigDecimal accumulatedEstimate) {
-        final DecoratedProductBacklogItem productBacklogItem = new DecoratedProductBacklogItem(ID, null, null, null, null, null, null, null);
+        final DecoratedProductBacklogItem productBacklogItem = new DecoratedProductBacklogItem(ID, null, null, null, null, null);
         productBacklogItem.setAccumulatedEstimate(accumulatedEstimate);
         return productBacklogItem;
     }

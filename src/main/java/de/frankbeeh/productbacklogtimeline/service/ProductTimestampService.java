@@ -34,18 +34,23 @@ public class ProductTimestampService {
 	@Inject
 	private SprintRepository sprintRepository;
 
-	public List<ProductBacklogItemComparison> getProductBacklog(
+	public List<ProductBacklogItemComparison> getProductBacklogComparison(
 			Long selectedTimestamp, Long referenceTimestamp) {
 		return getProductTimestampComparison(selectedTimestamp,
 				referenceTimestamp).getProductBacklogComparision()
 				.getComparisons();
 	}
 
-	public List<SprintComparison> getVelocityForecast(Long selectedTimestamp,
-			Long referenceTimestamp) {
+	public List<SprintComparison> getVelocityForecastComparison(
+			Long selectedTimestamp, Long referenceTimestamp) {
 		return getProductTimestampComparison(selectedTimestamp,
 				referenceTimestamp).getVelocityForecastComparison()
 				.getComparisons();
+	}
+
+	public VelocityForecast getVelocityForecast(Long selectedTimestamp) {
+		return createVelocityForecast(sprintRepository
+				.findByProductTimestampId(selectedTimestamp));
 	}
 
 	private ProductTimestampComparison getProductTimestampComparison(

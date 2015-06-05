@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import de.frankbeeh.productbacklogtimeline.service.visitor.AccumulateEstimate;
 import de.frankbeeh.productbacklogtimeline.service.visitor.ForecastSprintOfCompletion;
 import de.frankbeeh.productbacklogtimeline.service.visitor.ProductBacklogItemVisitor;
@@ -43,15 +46,14 @@ public class ProductBacklog {
 	// this.items = new LinkedList<ProductBacklogItem>();
 	// }
 
-	public ProductBacklog(List<DecoratedProductBacklogItem> items) {
+	public ProductBacklog(List<? extends DecoratedProductBacklogItem> items) {
 		this();
 		this.items.addAll(items);
 	}
 
-	//
-	// public void addItem(ProductBacklogItem productBacklogItem) {
-	// items.add(productBacklogItem);
-	// }
+	public void addItem(DecoratedProductBacklogItem productBacklogItem) {
+		items.add(productBacklogItem);
+	}
 
 	public List<DecoratedProductBacklogItem> getItems() {
 		return items;
@@ -96,6 +98,12 @@ public class ProductBacklog {
 		return items.size();
 	}
 
+	
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append(items.toString()).toString();
+	}
+	
 	// public List<ProductBacklogItem> getMatchingProductBacklogItems(
 	// ReleaseCriteria criteria) {
 	// final List<ProductBacklogItem> matchingProductBacklogItems = new

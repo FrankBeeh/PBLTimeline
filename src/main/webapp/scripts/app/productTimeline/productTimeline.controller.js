@@ -29,7 +29,7 @@ app.controller(
 		                var file = files[i];
 		                Upload.upload({
 		                    url: 'api/upload',
-		                    fields: {'username': $scope.settingsAccount.login},
+		                    fields: {'username': $scope.settingsAccount.login, 'selectedTimestamp': ProductTimelineScope.selectedTimestamp },
 		                    file: file
 		                }).progress(function (evt) {
 		                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);

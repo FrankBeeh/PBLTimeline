@@ -94,6 +94,6 @@ public class AccumulateEstimateTest {
 
     private DecoratedProductBacklogItem newProductBacklogItem(
 			final BigDecimal estimate, State state) {
-		return new DecoratedProductBacklogItem(null, null, null, estimate, state, null, null, null);
+		return new DecoratedProductBacklogItem(null, null, null, estimate, state, null);
 	}
 }

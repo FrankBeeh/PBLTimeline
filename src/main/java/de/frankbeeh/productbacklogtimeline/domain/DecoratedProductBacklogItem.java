@@ -28,8 +28,7 @@ public class DecoratedProductBacklogItem {
 	private final ProductBacklogItem data;
 
 	public DecoratedProductBacklogItem(String id, String title,
-			String description, BigDecimal estimate, State state,
-			String jiraSprint, Long rank, String plannedRelease) {
+			String description, BigDecimal estimate, State state, Long rank) {
 		this(new ProductBacklogItem(id, title, description, estimate,
 				state == null ? null : state.toString(), rank));
 	}
@@ -46,12 +45,13 @@ public class DecoratedProductBacklogItem {
 	public BigDecimal getAccumulatedEstimate() {
 		return accumulatedEstimate;
 	}
-	
+
 	public DecoratedSprint getCompletionForecast(String progressForecastName) {
 		return completionForecast.get(progressForecastName);
 	}
 
-	public void setCompletionForecast(String progressForecastName, DecoratedSprint completionSprintForecast) {
+	public void setCompletionForecast(String progressForecastName,
+			DecoratedSprint completionSprintForecast) {
 		completionForecast.put(progressForecastName, completionSprintForecast);
 	}
 
